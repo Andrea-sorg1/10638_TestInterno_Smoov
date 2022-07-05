@@ -25,6 +25,12 @@
 *.la
 *.a
 *.lib
+*.~bpr
+*.~cpp
+*.~ddp
+*.~dfm
+*.~dsk
+*.~h
 
 # Executables
 *.exe
