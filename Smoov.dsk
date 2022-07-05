@@ -68,8 +68,8 @@ LeftCol=1
 
 [View1]
 Module=D:\_Tecno\10638_TestInterno_Smoov\10638_TestInterno_Smoov\Main.cpp
-CursorX=28
-CursorY=120
+CursorX=32
+CursorY=105
 TopLine=101
 LeftCol=1
 
@@ -260,7 +260,7 @@ LRDockWidth=445
 Dockable=1
 SplitPos=133
 ArrangeBy=Name
-SelectedItem=Caption
+SelectedItem=Name
 ExpandedItems=
 HiddenCategories=
 

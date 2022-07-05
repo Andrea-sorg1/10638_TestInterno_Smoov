@@ -117,6 +117,7 @@ void __fastcall TFormMain::FormResize(TObject *Sender)
   // Gestione posizionamento Form di gestione impianto
   //---------------------------------------------------
   if(!FormInClose){
+     FormLayout->Left   = 1;
      FormLayout->Left   = 0;
      FormLayout->Top    = 0;
      FormLayout->Height = FormMain->ClientHeight-83;

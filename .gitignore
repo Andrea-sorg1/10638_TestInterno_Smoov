@@ -25,14 +25,14 @@
 *.la
 *.a
 *.lib
+
+# Executables
+*.exe
+*.out
+*.app
 *.~bpr
 *.~cpp
 *.~ddp
 *.~dfm
 *.~dsk
 *.~h
-
-# Executables
-*.exe
-*.out
-*.app
