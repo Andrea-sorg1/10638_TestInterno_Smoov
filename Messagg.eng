@@ -1,0 +1,751 @@
+  1 Supervision Software for plant TGV - TECNOFERRARI  ---   Release%02d.%02d
+  2 
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10 FILLING
+ 11 Confirm the Filling of the Store?
+ 12 EMPTYING
+ 13 Confirm the Emptiyng of the Store?
+ 14 DISABLE STORE GROUP
+ 15 ENABLE STORE GROUP
+ 16
+ 17
+ 18
+ 19
+ 20 System
+ 21 TGV
+ 22 Nodes
+ 23 Machine
+ 24 Storage
+ 25 Box
+ 26 Doors
+ 27 Configuration
+ 28 Bays
+ 29 Shelves
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42 System Errors
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95 This configurazion is avaible only on the SERVER PC...
+ 96 Error accessing the file <%s>
+ 97 Error opening the file %s
+ 98 Errore nella fase di stampa: "%s"
+ 99 ATTENTION
+100 ERROR
+101 Password
+102 Input Password:
+103 OK
+104 Exit
+105 Wron Password!
+106 Change Messaging
+107 Select desired language
+108 TGV %d Program interrupted at node %d for exceeding MAXSTEP %d
+109 Error in compila_prg() function TGV %d (node = %d)
+110 Unable to locate on record %d of file %s!
+111 Error Writing record %d file %s!
+112 File read error: %s...
+113 File write error: %s...
+114 Error Reading Status Tgv %d!
+115 Error in compila_prg() function TGV %d (node = %d)
+116 Error Search_Path(): TGV = %d (node = %d, dest.= %D, prev.= %D)
+117 TGV %d Search stopped in %d missing route (dest.= %D, prev.= %D)
+118 TGV %d Search stopped in %d with prox.%D (dest.= %D, prev.= %D)
+119 TGV %d Error in %d, dest.= %d, prev.= %d, direction indication FW/BWD
+120 TGV %d Error in node %d dest= %d direction opposite to prev.node %d
+121 TGV %d Error in node %d dest=%d rotation change: prev.node slowdown %d
+122 TGV %d node %d with next.%d duplicated (dest.=%d, prev.=%d)
+123 TGV %d search stopped.in %d MAXPERCORSI %d (dest=%d, prev.=%d)
+124 TGV %d Error in function distanza() (node=%d)
+125 TGV %d distanza() stopped at %d long path: %d (dest=%d)
+126 TGV %d generic error in function Free_nodi()
+127 grafical Coordinate of the point:
+128 Coordinate %c:
+129 TGV%d - distance %dcm between node %d and next %d smaller then %dcm...
+130 Clockwise Curve
+131 Anti-Clockwise Curve
+132 Mapping Zone nr.%d Mirror %d
+133 Curve ray %d
+134 Load/Unload phase
+135 Program End
+136 BACKWARD Direction
+137 FORWARD Direction
+138 UNLOAD phase
+139 LOAD phase
+140 Rotation 270 degree
+141 Rotation 180 degree
+142 Rotation 90 degree
+143 Rotation 0 degree
+144 Riposition Store Entrance 
+145 Approaching LOAD from Machine/Bay
+146 Approaching UNLOAD on Storage
+147 Approaching LOAD from Storage
+148 Distance  %03d
+149 Node %03d
+150 Clockwise deviation 
+151 Anti-clockwise deviation
+152 Data reading error from PLC of TGV Nr.:%d!
+153 Approaching UNLOAD on Machine/Bay
+154 Rotation block at 180
+155 Invert rotation at 180
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167 
+168
+169
+170 Reset
+171 &Exit
+172 Are you sure?
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219 Error: Tgv in wrong position!
+220
+221 UP
+222 DOWN
+223 LEFT
+224 RIGHT
+225
+226
+227
+228
+229
+230
+231 Messages
+232 Communication
+233 Backup
+234 Graphical Background
+235 Simulation
+236 Plant Zone
+237 Tgv log
+238 TecnoFerrari Path Test
+239 Test PLC OMRON
+240 Test PLC SIEMENS
+241 System Errors
+242 Test PLCs Communication
+243
+244
+245
+246
+247
+248
+249
+250 Editor TGV
+251 Path TGV
+252 Program TGV
+253 PLC Program TGV
+254 Alarms TGV
+255 Missions Hystoric Log
+256 Alarms Hystoric Log
+257 Statistics
+258 TGV Mission Reset
+259 Input TGV Number:
+260
+261 Input Shelf Number
+262 List bays on shelves
+263
+264
+265
+266
+267 Select TGV+zona (tt+zz):
+268 Curve ray verify
+269 Show mirrors
+270 Create node archive
+271 Node Editor
+272 Free plant's node
+273 Ricalculate node distance
+274 Modify node coordinates
+275
+276 Create storage archives
+277 Storage Editor
+278 Storage State
+279 Empty / Fill manual Storage
+280 Create machine archive
+281 Machine Editor
+282 Calls History log
+283
+284
+285 Create doors archive
+286 Doors Editor
+287 Manual Consent
+288 Create shelves archive
+289 Shelves Editor
+290 Create box archive
+291 Box Editor
+292 Box Type
+293 Storage Type:
+294 Disabled
+295 FULL
+296 ONLY LOW FULL
+297 ONLY HIGH FULL
+298 EMPTY
+299 Storage nr.%d
+300 Number
+301 FIFO
+302 Deposit Node
+303 Withdrawal Node
+304 Bay Height
+305 Storage Capacity (ground)
+306 Present Box Number 
+307 Full
+308 Floor Enable
+309 First insert date
+310 First insert hour
+311 Emergency only
+312 No emergency
+313 Only rotated
+314 NO rotated
+315 Storage status
+316 0 - FREE
+317 1 - FULL
+318 2 - EMPTY
+319 Location data:
+320 Max floor number permitted
+321 Floor %d:
+322 Unable to deposit on high floor, \nno presence on the lower floor Pos:% d, Floor:% d.
+323 Storage with different processing boxes ... Update the data to avoid anomalies!
+324 Storage type not compatible with the boxes inserted!
+325 presence
+326 Create Bay archive
+327 Bay Editor
+328 Bay state
+329
+330 &Start
+331 &End
+332 &Forward
+333 &Backward
+334 &Search
+335 &Copy
+336 &Insert
+337 Sa&ve
+338 &Delete
+339 &Print
+340 Change Batteri position occupied
+341 Confirm Cancel Mission TGV%d?
+342 ATTENTION: The File %s it is about to be recreated. Continue? 
+343 Activate unload coordinates map for TGV%d?
+344 Error readin node %d
+345 TGV in wrong position %d...previous %d!
+346 Wronga data in DM90:%d - DM91:%d - DM92:%d!
+347 Error reset alarm on TGV%d...
+348 Dead Lock TGV%d blocked (node %d reserved from tgv%d)
+349 (START: %03d - END: %03d) (Intermediate Start: %03d - Intermediate END: %03d)
+350 Position: %03d  --->  Node: %03d
+351 Error reading from record %d of the file %s...
+352 End mission anomal POS=%d, START=%d, OKROG=%d
+353 End mission anomal POS=%d, TGV in manual
+354 Activate unload map coordinate for TGV%d?
+355 Configuration file %s non found!
+356 Tgv not ready...
+357 Error Machina NOT call
+358 Error wrong fork number
+359 Miss matching to charge type (for Machine%03d)!
+360 TGV error on TGV lack of container: Reset the data!
+361 Error on TGV container presence: unload it or assign the data
+362 Error: TGV on wrong position!
+363 Error during manual mission reset
+364 Anomaly: START=2 without a running mission
+365 Destination occupied from another TGV
+366 Mission (%s) and TGV (%s)
+367 Mission History TGV
+368 |  DATA   |  TIME  |TGV|LOCAT| MISSION                     |START | END  |PINTF |
+369 Attention: Verify container presence or reset the data...
+370
+371 Error in record search
+372 wrong node!
+373 Number not permitted...
+374 TGV Number not permitted...
+375 Wrong destination...
+376 Locatione yet existent. Overwrite?
+377 Attention: Missing destination combined with the product ... 
+378 Error Record Manage
+379 TGV Alarm in restarting from track already busy!
+380 Save Confirm?
+381 Insert door number
+382 Door encumbrance node:
+383 Consent State:
+384 Encumbrance direction:
+385 Entry request
+386 Entry OK 
+387 TGV Encumbr
+388 Partial open
+389 Graphical coordinate of the point:
+390 Coordinate X
+391 Coordinate Y
+392 General Data:
+393 Direction for Load / Unload operation:
+394 Node Description:
+395 Node Management Type:
+396 Path data:
+397 Node Number
+398 Primary Zone
+399 Secundary Zone
+400 Busy ( TGV number )
+401
+402 1 - Forward
+403 2 - Backward
+404 TGV Recharge
+405 Machine
+406 Storage
+407 Path
+408 Normal
+409 Alternative path
+410 Reentering node
+411 ...
+412 Error: %s,%d
+413 Pt
+414 Zp
+415 Zs
+416 Ps
+417 Av
+418 Ind
+419 Rot
+420 Ral
+421 Dist
+422
+423 Curves management
+424 A&dd Row
+425 &Delete Row
+426 &Forward
+427 &Backward
+428 Last Record!
+429 First Record!
+430 Node Search
+431 Input node number:
+432 Wrong node number!
+433 Copy Node
+434 Node already exitent. Overwrite?
+435 Delete Node
+436 Empty Archive!
+437 Confirm Delete?
+438 Aborted
+439 EDITATION
+440 INSERT
+441 Total record: %d
+442 Terminal Point %d Repeted!
+443 Delete record
+444 Impossible to run deviation with zero impulse (%s=0)!
+445 Impossible to free the path nodes!
+446 Search record
+447 Input record number
+448 Machine copy
+449 No record in the archive...
+450 UDC
+451 Label
+452 Location
+453 Serving priority
+454 Identifier %d duplicated in Machine %d Position %d!
+455 Identifier %d duplicated in Storage %d Position %d!
+456 Identifier %d duplicated on Tgv %d!
+457 Identifier %d duplicated on Bay %d!
+458 BOX Data
+459 Code
+460 Lot
+461 Height
+462 Overlap
+463 Bay State:
+464 Position data:
+465 Bay Type:
+466 None
+467 RETRIEVE
+468 DEPOSIT
+469 Call
+470 Communication exclusion
+471 Exclusion
+472 Missing RETRIEVE/DEPOSIT
+473 Tgv not avaible
+474 State
+475 Size
+476 Sorg
+477 Dest
+478 Quantity
+479 Priority calculate
+480 Mission data:
+481 Actual Position TGV
+482 Resting position TGV
+483 Waiting point
+484 Pointer to program step: %X
+485 Position ( OffSet from Node ): %X
+486 Door
+487 Machine: %d
+488 State mission:
+489 0 - Null
+490 1 - Active
+491 2 - Ended
+492 Exclusions TGV:
+493 Esclusion from missions
+494 Exclusion recharge
+495 Exclusion communication
+496 Semi-automatic
+497 Automatic
+498
+499
+500 State bit:
+501 Tgv at 0 degrees
+502 Tgv at 90 degrees
+503 Tgv Forward
+504 Tgv Backward
+505 Tgv in Allarm
+506 Tgv OK program
+507 Tgv waiting
+508 Tgv Automatic
+509 Tgv on node
+510 Tgv in riserve
+511 Tgv under storage
+512 Tgv at 180 degrees
+513 Tgv at 270 degrees
+514 Tgv LOAD '%c'
+515 Tgv moving
+516 fork '%c' out encumb.
+517 fork '%c' closed
+518 NONE
+519 Orig:n
+520 None
+521 Machine
+522 Storage
+523 Bay
+524 Number
+525 Onboard load situation:
+526 Presence "A":
+527 Presence "B":
+528 data
+529 CODE%02d
+530 EMPTY
+531      
+532 
+533 Save
+534 Load
+535 Serving
+536 Alarm reset
+537 MACHINES:
+538 Only IN
+539 Only OUT
+540 Running mission data
+541 START
+542 STATE
+543 CALL
+544 Battery
+545 Zone
+546 Running mission Reset
+547 Running mission
+548 TGV Alarm state
+549 SEMI-WORKED
+550 Serving history
+551 Simple positioning on NODE %d
+552 APPROACHING
+553 Unknown (nodo %d)
+554 LOAD FROM MACHINE nr.%d (%s) FORK %s
+555 UNLOAD ON MACHINE nr.%d (%s) FORK %s
+556 %s - LOAD FROM STORAGE nr.%d FORK %s
+557 %s - UNLOAD TO STORAGE nr.%d FORK %s
+558 LOAD FROM STORAGE nr.%d FORK %s
+559 UNLOAD TO STORAGE nr.%d FORK %s
+560 LOAD FROM BAY nr.%d (%s) FORIK %s
+561 UNLOAD TO BAY nr.%d (%s) FORK %s
+562 Destination shelf
+563 Pile
+564 Floor
+565 Semi-Automatic
+566 Load/Unload from bay
+567 Destination bay
+568 Load/Unload shelf
+569 nr.%02d - TGV%d - Load/unload from bay %d
+570 Programmed missions list:
+571 Mission data in programming:
+572 Tgv number to exec the mission
+573 Simple positioning
+574 Load/unload machine
+575 Load/unload storage
+576 simple positioning:
+577 destination node
+578 Load/unload Machine:
+579 Destination Machine
+580 Load/unload storage:
+581 Destination storage
+582 default
+583 enter
+584 exit
+585 nr.%02d - impossible
+586 nr.%02d - TGV%d - Simple positioning at node %d
+587 nr.%02d - TGV%d - Load/unload machine %d
+588 nr.%02d - TGV%d - Load/unload storage %d
+589 (SEMI-AUTOMATIC) - TGV number not admitted...
+590 (SEMI-AUTOMATIC) - TGV not enabled for semi-automatic...
+591 (SEMI-AUTOMATIC) - Mission type unknown..
+592 (SEMI-AUTOMATIC) - Node not valide...
+593 (SEMI-AUTOMATIC) - Machine not permitted...
+594 (SEMI-AUTOMATIC) - Storage not permitted...
+595 (SEMI-AUTOMATIC) - Grip type missing TGV...
+596 (SEMI-AUTOMATIC) - Wrong TGV position...
+597 (SEMI-AUTOMATIC) - Bay not admitted...
+598 (SEMI-AUTOMATIC) - Shelf bay unknown...
+599
+600 SHELF
+601 Continuous cycle
+602 Operation type
+603
+604
+605
+606
+607
+608
+609
+610
+611 DB4 ERROR TGV TIMES: ( %s )
+612 Data search coordinate
+613 Search structure:
+614 START search:
+615 END Search:
+616 Data:
+617 Time:
+618
+619
+620 TGV data
+621 TGV times:
+622 Additional information:
+623 Data update date
+624 Data update time
+625 From last reset
+626 AUTOMATIC
+627 SEMI-AUTOMATIC
+628 RECHARGE POSITION
+629 RESERVE
+630 ALARM
+631 ACTIVE MISSION
+632 Total missions number of the TGV from last reset
+633 Battery state
+634 Hour passed from last reset
+635 Eror: Read battery status TGV%d !
+636 Eror: TGV %d in position %d out of path!
+637 Eror: Call <%d> inexistent!
+638 Error: TGV %d in position=0!
+639
+640 Anomaly: START=2 withiout running mission (Position: %d)
+641 position alreadi assigned to TGV%d...please change!
+642
+643
+644
+645 |  DATE   |  TIME  |      | MACHINE  | MISSION TYPE                    |NODE| FORK |
+646 |  DATE   |  TIME  | LOCAT.| CALL TYPE                                       |
+647
+648
+649 ATTENTION: Inserted data in wrong format...
+650 "ATTENTION: origin type or origin number is missing"
+651 Is not possible reset the mission of TGV %d, Node %d Notable Point.
+652 Is not possible reset the mission of TGV %d, Node %d busy.
+653
+654
+655
+656
+657
+658 Box reserved:
+659 Required boxes:
+660 Machine nr.%d
+661 Number
+662 Priority
+663 Communication configuration:
+664 Machine signal state from PLC:
+665 Machine type:
+666 Macchina State:
+667 Station Data:
+668 Station state:
+669 Box data on a single position:
+670 Station signal state from PLC:
+671 TGV Consent:
+672 Matched storage:
+673 Node
+674 Capacity
+675 Urgency
+676 Exclusion
+677 No code
+678 No Storage
+679 Request
+680 Expulsion
+681 Code
+682
+683 State
+684 Type
+685 Entrance req.
+686 Entrance OK
+687 TGV in Encumbrance
+688 Operation End
+689 OK Fork up
+690 Position data nr.%d
+691 None
+692 TYPE1
+693 TYPE2
+694 TYPE3
+695 TYPE4
+696 TYPE5
+697 Communication exclusion
+698 Production END
+699 for FULL
+700 for EMPTY
+701 Manual carts list
+702 Overlap block on conveyor
+703 PLC consents
+704 PLC ID
+705 Block
+706 All full
+707 Pallet
+708 Carwash
+709 Low
+710 Rotated
+711 Grip configuration
+712 Bay Height
+713 Uplift
+714 Matching group
+715 ZONE GROUP
+716 Desc
+717 Weight
+718 Shift
+719
+720 Date/Time
+721 Assignment
+722 Offset to node
+723 Depth
+724 Box Num.
+725 Box Tot.
+726 Overlap Pallet
+727 Low Pallet
+728 Pallet Type
+729 Grip Data
+730
+731 BOX TYPE
+732 Box Type
+733 Dimension
+734 Length
+735 Width
+736 Height
+737 Configuration deposit in storage 
+738 Offset from node in storage (cm)
+739 Pallet distance (cm)
+740 Rounding constant
+741
+742 PLC Exclusion
+743 anticipate request
+744 interlocked door
+745 Door blocked
+746 TGV arriving
+747 Semaphore doors Nodes
+748 Loaded TGV
+749
+750
+

@@ -1,0 +1,160 @@
+00 (1006.00) - Allarme: Rotazione 
+01 (1006.01) - Allarme: Blocco batteria aperto
+02 (1006.02) - Allarme: Tgv non in posizione - Posizionare manualmente su nodo
+03 (1006.03) - Allarme: Conteggio encoder traino KO in direzione avanti
+04 (1006.04) - Allarme: Conteggio encoder traino KO in direzione indietro
+05 (1006.05) - Allarme: Salita forche
+06 (1006.06) - Allarme: Discesa forche
+07 (1006.07) - Allarme: Timeout centralina gruppo forche
+08 (1006.08) - Allarme: 
+09 (1006.09) - Allarme: Mancanza start
+10 (1006.10) - Allarme: Carico assente o fuori posizione
+11 (1006.11) - Allarme: Sicurezze infrante - foto anteriore
+12 (1006.12) - Allarme: Azinamento 1 traino
+13 (1006.13) - Allarme: Azionamento 2 sterzo
+14 (1006.14) - Allarme: Batteria scarica
+15 (1006.15) - Allarme: Sicurezze infrante - Laser scanner laterali
+16 (1007.00) - Allarme: Sicurezze infrante - Funghi di emergenza
+17 (1007.01) - Allarme: 
+18 (1007.02) - Allarme: Caricabatterie KO per cambio automatico
+19 (1007.03) - Allarme: Caricabatterie KO
+20 (1007.04) - Allarme: Fotocellule di sicurezza laterali 
+21 (1007.05) - Allarme: Conteggio encoder traino KO
+22 (1007.06) - Allarme: Temperatura ecessiva motori
+23 (1007.07) - Allarme: Timeout comunicazione azionamento 1 traino
+24 (1007.08) - Allarme: Procedura di azzeramento encoder pinze in corso
+25 (1007.09) - Allarme: Timeout comunicazione laser di guida
+26 (1007.10) - Allarme: 
+27 (1007.11) - Allarme: 
+28 (1007.12) - Allarme: Blocco laser di guida
+29 (1007.13) - Allarme: Centralina di sicurezza da ripristinare
+30 (1007.14) - Allarme: Tgv in manuale
+31 (1007.15) - Allarme: Timeout comunicazione azionamento 2 sterzo
+32 (1008.00) - Allarme: Tgv non inserito su nodo - riposizionare manualmente
+33 (1008.01) - Allarme: Pollicino6
+34 (1008.02) - Allarme: Presenza bobina su trespolo in deposito
+35 (1008.03) - Allarme: Timeout rotazione rulliere
+36 (1008.04) - Allarme: Azionamento centralina sollevamneto in blocco
+37 (1008.05) - Allarme: Salita forche dentro lo scaffale
+38 (1008.06) - Allarme: Riccerca quota di smezzatura errata
+39 (1008.07) - Allerme: Fotocellula sovrapposizione sempre in lettura
+40 (1008.08) - Allarme: 
+41 (1008.09) - Allarme: Tgv in spinta pallet dentro lo scaffale
+42 (1008.10) - Allarme: Bobina disallineata su forche in carico/scarico
+43 (1008.11) - Allarme: Chiusura forche non riuscita 
+44 (1008.12) - Allarme: apertura forche non riuscita
+45 (1008.13) - Allarme: Azionamento rulliera 1 in blocco
+46 (1008.14) - Allarme: 
+47 (1008.15) - Allarme: Usura ruota ecessivo
+48 (1009.00) - Libero
+49 (1009.01) - Allarme: 
+50 (1009.02) - Allarme: Apertura pinze non riuscita
+51 (1009.03) - Allarme: Chiusura pinze non riuscita
+52 (1009.04) - Allarme: Encoder pinza inferiore KO
+53 (1009.05) - Allarme: Encoder pinza superiore KO
+54 (1009.06) - Libero
+55 (1009.07) - Libero
+56 (1009.08) - Libero
+57 (1009.09) - Libero
+58 (1009.10) - Libero 
+59 (1009.11) - Libero
+60 (1009.12) - Libero
+61 (1009.13) - Libero
+62 (1009.14) - Allarme: Encoder apertura chiusura forche KO
+63 (1009.15) - Allarme: Timeout rotazione forche
+61 (1010.00) - Allarme: Batteria non in posizione
+65 (1010.01) - Allarme: Timeout chiusura blocco batteria
+66 (1010.02) - Allarme: Timeout apertura blocco batteria 
+67 (1010.03) - Allarme: Blocco batteria aperto 
+68 (1010.04) - Libero 
+69 (1010.05) - Libero 
+70 (1010.06) - Allarme: Ruota usurata a Pc
+71 (1010.07) - Libero 
+72 (1010.08) - Libero
+73 (1010.09) - Libero  
+74 (1010.10) - Libero 
+75 (1010.11) - Libero 
+76 (1010.12) - Libero 
+77 (1010.13) - Libero 
+78 (1010.14) - Libero 
+79 (1010.15) - Libero
+80 (1011.00) - Allarme: Bandelle anteriori
+81 (1011.01) - Allarme: Bandella destra
+82 (1011.02) - Allarme: Bandella posteriore
+83 (1011.03) - Allarme: Bandella sinistra
+84 (1011.04) - Allarme: Laser destro
+85 (1011.05) - Allarme: Laser posteriore
+86 (1011.06) - Allarme: Laser sinistro
+87 (1011.07) - Allarme: Laser anteriore
+88 (1011.08) - Allarme: Funghi di emergenza
+89 (1011.09) - Allarme: Ostacolo su forca destra
+90 (1011.10) - Allarme: Ostacolo su forca sinistra
+91 (1011.11) - Libero
+92 (1011.12) - Libero
+93 (1011.13) - Libero
+94 (1011.14) - Libero
+95 (1011.15) - Libero
+96 (1012.00) - Allarme: Tgv in blocco da supervisore
+97 (1012.01) - Allarme: Blocco ingresso cambio batteria automatico
+98 (1012.02) - Allarme: Sicurezza infrante - Laser scanner posteriore
+99 (1012.03) - Allarme: Blocco ingresso macchina
+100 (1012.04) - Libero
+101 (1012.05) - Libero
+102 (1012.06) - Libero
+103 (1012.07) - Libero
+104 (1012.08) - Libero
+105 (1012.09) - Libero
+106 (1012.10) - Libero
+107 (1012.11) - Libero
+108 (1012.12) - Libero
+109 (1012.13) - Libero
+110 (1012.14) - Libero
+111 (1012.15) - Libero
+112 (1013.00) - Allarme: Allarme mancanza riflettori
+113 (1013.01) - Allarme: Navigazione scarsa 
+114 (1013.02) - Allarme: Rallentamento laser scanner per lettura ostacolo
+115 (1013.03) - Allarme: Timeout raspberry
+116 (1013.04) - Allarme: Timeout Nav 350
+117 (1013.05) - Allarme: Manca syncro con nav 350
+118 (1013.06) - Libero
+119 (1013.07) - Libero
+120 (1013.08) - Libero
+121 (1013.09) - Libero
+122 (1013.10) - Libero
+123 (1013.11) - Libero
+124 (1013.12) - Libero
+125 (1013.13) - Libero
+126 (1013.14) - Libero
+127 (1013.15) - Libero
+128 (1014.00) - Allarme: Valvola scolo olio aperta
+129 (1014.01) - Allarme: Valvola scolo olio bloccata
+130 (1014.02) - Allarme: Pinze non in posizione per carico/scarico
+131 (1014.03) - Allarme: Freni bloccati - Controllare modulo sblocco freni
+132 (1014.04) - Allarme: Cestone sporgente su rulliere
+133 (1014.05) - Allarme: Sportelli quadro elettrico aperti
+134 (1014.06) - Allarme: Ecoder sterzo KO
+135 (1014.07) - Allarme: Fasi scambiate encoder sterzo
+136 (1014.08) - Allarme: Sterzo in extracorsa
+137 (1014.09) - Libero
+138 (1014.10) - Allarme: Nodo non letto o errato centraggio
+139 (1014.11) - Allarme: Errata posizione dispositivo presenza carico 
+140 (1014.12) - Allarme: Tgv non in traccia - Direzione indietro 
+141 (1014.13) - Allarme: Tgv non in traccia - Direzione avanti
+142 (1014.14) - Allarme: Conteggio encoder forche KO
+143 (1014.15) - Allarme: Blocco gruppo forche per quote errate
+144 (1015.00) - Allarme: Restart laser di guida
+145 (1015.01) - Allarme: Richiesta azzeramento gruppo forche
+146 (1015.02) - Reset encoder gruppo forche in corso
+147 (1015.03) - Libero
+148 (1015.04) - Libero
+149 (1015.05) - Libero
+150 (1015.06) - Libero
+151 (1015.07) - Libero
+152 (1015.08) - Libero
+153 (1015.09) - Libero
+154 (1015.10) - Libero
+155 (1015.11) - Libero
+156 (1015.12) - Libero
+157 (1015.13) - Libero
+158 (1015.14) - Libero
+159 (1015.15) - Libero

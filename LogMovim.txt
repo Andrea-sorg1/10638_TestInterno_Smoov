@@ -1,0 +1,12 @@
+01/07/2022 17.01.31 ;Start Miss.Pickup Storage;01;;0;0;0-800x1200;0;0
+01/07/2022 17.01.48 ;Storage Pickup;01;Storage 08 Pos.03 Layer 00;1;0;0-800x1200;0;0
+01/07/2022 17.02.19 ;Start Miss.Dropoff Storage;01;;1;0;0-800x1200;0;0
+01/07/2022 17.02.37 ;Storage Dropoff;01;Storage 01 Pos.03 Layer 00;1;0;0-800x1200;0;0
+04/07/2022 11.13.09 ;Start Miss.Pickup Storage;02;;0;0;0-800x1200;0;0
+04/07/2022 11.13.50 ;Storage Pickup;02;Storage 01 Pos.03 Layer 00;1;0;0-800x1200;0;0
+04/07/2022 11.14.09 ;Start Miss.Dropoff Storage;02;;1;0;0-800x1200;0;0
+04/07/2022 11.14.32 ;Storage Dropoff;02;Storage 25 Pos.01 Layer 00;1;0;0-800x1200;0;0
+04/07/2022 17.08.33 ;Start Miss.Pickup Storage;01;;0;0;0-800x1200;0;0
+04/07/2022 17.08.57 ;Storage Pickup;01;Storage 12 Pos.03 Layer 00;1;0;0-800x1200;0;0
+04/07/2022 17.09.25 ;Start Miss.Dropoff Storage;01;;1;0;0-800x1200;0;0
+04/07/2022 17.09.49 ;Storage Dropoff;01;Storage 01 Pos.03 Layer 00;1;0;0-800x1200;0;0

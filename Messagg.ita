@@ -1,0 +1,751 @@
+  1 Software di supervisione Impianto SMOOV ASRV --- Release%02d.%02d
+  2 
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10 RIEMPIMENTO
+ 11 Conferma RIEMPIMENTO MAGAZZINO?
+ 12 SVUOTAMENTO
+ 13 Conferma SVUOTAMENTO MAGAZZINO?
+ 14 DISABILITA GRUPPO MAG.
+ 15 ABILITA GRUPPO MAG.
+ 16
+ 17
+ 18
+ 19
+ 20 Sistema
+ 21 ASRV
+ 22 Nodi
+ 23 Chiamate
+ 24 Magazzini
+ 25 Box
+ 26 Porte
+ 27 Configurazione
+ 28 Baie
+ 29 Scaffali
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42 Errori di Sistema
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95 Questa configurazione è possibile solo sul PC SERVER...
+ 96 Errore di accesso al file <%s>
+ 97 Errore apertura file %s
+ 98 Errore nella fase di stampa: "%s"
+ 99 ATTENZIONE
+100 ERRORE
+101 Password
+102 Digitare Password:
+103 OK
+104 Esci
+105 Password non corretta!
+106 Modifica Messaggeria
+107 Selezionare lingua desiderata
+108 TGV%d Programma interrotto nel nodo %d per aver superato MAXSTEP %d
+109 Errore nella funzione compila_prg() TGV %d (nodo=%d)
+110 Impossibile posizionarsi sul record %d del file %s!
+111 Errore Scrittura record %d file %s!
+112 Errore lettura file: %s...
+113 Errore scrittura file: %s...
+114 Errore Lettura Stato Tgv%d !
+115 Errore nella funzione compila_prg() TGV %d (nodo=%d)
+116 Errore Cerca_Path(): TGV=%d ( nodo=%d, dest.=%d, prec.=%d )
+117 TGV %d Ricerca interr.in %d manca percorso (dest.=%d, prec.=%d)
+118 TGV %d Ricerca interr.in %d con prox.%d (dest.=%d, prec.=%d)
+119 TGV %d Errore in %d, dest=%d, prec=%d, indicazione direz. av/ind.
+120 TGV %d Errore in nodo %d dest= %d direz. opposta a nodo prec.%d
+121 TGV %d Errore in nodo %d dest=%d cambio rotaz.: rall.nodo prec.%d
+122 TGV %d nodo %d con prox.%d duplicato (dest.=%d, prec.=%d)
+123 TGV %d Ricerca interr.in %d MAXPERCORSI %d (dest=%d, prec.=%d)
+124 TGV %d Errore nella funzione distanza() (nodo=%d)
+125 TGV %d distanza() interrotta al %d percorso lungo: %d (dest=%d)
+126 TGV %d Errore generico nella funzione Free_nodi()
+127 Coordinate grafiche del punto:
+128 Coordinata %c:
+129 TGV%d - distanza %dcm tra nodo %d e succ %d inferiore a %dcm...
+130 Curva oraria
+131 Curva anti-oraria
+132 Zona mapping nr.%d Specchi %d
+133 Raggio curva %d
+134 Fase di CARICO/SCARICO
+135 Fine Programma
+136 Direzione INDIETRO
+137 Direzione AVANTI
+138 Fase di SCARICO
+139 Fase di CARICO
+140 Rotazione 270 gradi
+141 Rotazione 180 gradi
+142 Rotazione 90 gradi
+143 Rotazione 0 gradi
+144 Riposiz. Ingresso Magazzino
+145 Avvicin. CARICO da Macc/Baia
+146 Avvicin. SCARICO su Magazzino
+147 Avvicin. CARICO da Magazzino
+148 Distanza  %03d
+149 Nodo %03d
+150 Deviazione oraria
+151 Deviazione anti-oraria
+152 Errore di Lettura Dati dal PLC del TGV Nr.:%d!
+153 Avvicin. SCARICO su Macc/Baia
+154 Blocco rotazione a 180
+155 Inverti rotazioni a 180
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167 
+168
+169
+170 Reset
+171 &Esci
+172 Vuoi veramente uscire?
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219 Errore: Tgv in posizione errata!
+220
+221 UP
+222 DOWN
+223 LEFT
+224 RIGHT
+225
+226
+227
+228
+229
+230
+231 Messaggeria
+232 Comunicazioni
+233 Backup
+234 SfondoGrafico
+235 Simulazione
+236 Zone Impianto
+237 Log Tgv
+238 Test percorsi Tecnoferrari
+239 Test PLC OMRON
+240 Test PLC SIEMENS
+241 Errori di sistema
+242 Test Comunicazione con PLCs
+243
+244
+245
+246
+247
+248
+249
+250 Editor Tgv
+251 Percorso Tgv
+252 Programma Tgv
+253 Programma Plc Tgv
+254 Allarmi Tgv
+255 Storico Missioni
+256 Storico Allarmi
+257 Statistiche
+258 Reset missione Tgv
+259 Inserire numero TGV:
+260
+261 Inserire numero dello scaffale:
+262 Elenco baie in scaffale
+263
+264
+265
+266
+267 Seleziona TGV+zona (tt+zz):
+268 Verifica raggi curve
+269 Visualizza riflettori
+270 Crea archivio nodi
+271 Editor nodi
+272 Libera nodi impianto
+273 Ricalcolo distanze nodi
+274 Modifica coordinate nodi
+275
+276 Crea archivio magazzini
+277 Editor magazzini
+278 Stato magazzini
+279 Svuota/Riempi magazzini manuale
+280 Crea archivio macchine
+281 Editor macchine
+282 Storico chiamate
+283
+284
+285 Crea archivio porte
+286 Editor porte
+287 Consensi manuali
+288 Crea archivio scaffali
+289 Editor scaffali
+290 Crea archivio box
+291 Editor box
+292
+293 Tipo magazzino:
+294 Disattivato
+295 PIENI
+296 solo PIENI BASSI
+297 solo PIENI ALTI
+298 VUOTI
+299 Magazzino nr.%d
+300 Numero
+301 FIFO
+302 Nodo di deposito
+303 Nodo di prelievo
+304 Gestione emergenza
+305 Capacità magazzino (a terra)
+306 Numero cestoni presenti
+307 Completo
+308 Abilitazione al piano
+309 Data primo inserimento
+310 Ora primo inserimento
+311 solo emergenza
+312 no emergenza
+313 solo ruotati
+314 no ruotati
+315 Stato magazzini:
+316 0 - LIBERO
+317 1 - PIENI
+318 2 - VUOTI
+319 Dati postazione:
+320 Max piani ammessi
+321 piano %d:
+322 Impossibile depositare su piano alto,\nmanca presenza al piano inferiore Pos:%d, Piano:%d.
+323 Magazzino con box di lavorazioni differenti...Aggiornare i dati per evitare anomalie!
+324 Tipo di magazzino non compatibile con box inseriti!
+325 presenza
+326 Crea archivio baie
+327 Editor baie
+328 Stato baie     
+329
+330 &Inizio
+331 &Fine
+332 &Avanti
+333 I&ndietro
+334 &Cerca
+335 C&opia
+336 In&serisci
+337 &Salva
+338 Cance&lla
+339 S&tampa
+340 Posizione di cambio batteria impegnata
+341 Conferma annullamento missione TGV%d?
+342 ATTENZIONE: Il File %s stà per essere ricreato. Continuare?
+343 Attivare scaricamento mappa coordinate per TGV%d?
+344 Errore nella lettura del nodo %d
+345 Il TGV in posizione errata %d...precedente %d!
+346 Dati anomali in DM90:%d - DM91:%d - DM92:%d!
+347 Errore azzeramento allarmi TGV%d...
+348 Dead Lock TGV%d bloccato (nod.%d prenotato da tgv%d)
+349 (INIZIO: %03d - FINE: %03d) (Intermedio INIZIO: %03d - Intermedio FINE: %03d)
+350 Posizione: %03d  --->  Nodo: %03d
+351 errore lettura del record %d del file %s...
+352 Fine missione anomala POS=%d, START=%d, OKROG=%d
+353 Fine missione anomala POS=%d, TGV in manuale
+354 Attivare scaricamento mappa coordinate per TGV%d?
+355 File configurazione %s non trovato!
+356 Tgv non pronto...
+357 Errore Macchina NON in Chiamata
+358 Errore Numero Forca sbagliato
+359 manca abbinamento a TIPO PRESA (per Mac%03d)!
+360 Errore su TGV mancanza contenitore: azzerare i dati!
+361 Errore su TGV presenza contenitore: scaricarlo o assegnare i dati!
+362 Errore: Tgv in posizione errata!
+363 Errore nell'azzeramento della missione in manuale
+364 Anomalia: START=2 senza missione in esecuzione
+365 Destinazione occupata da altro TGV
+366 Missione (%s) e TGV (%s)
+367 Storico missioni TGV
+368 |  DATA   |  ORA   |TGV|LOCAZ| MISSIONE                    |INIZIO| FINE |PINTF |
+369 Attenzione: Verificare presenza contenitore o azzerare i dati...
+370
+371 Errore in cerca record...
+372 Nodo errato!
+373 Numero non ammesso...
+374 Numero del TGV non ammesso...
+375 Destinazione non corretta...
+376 La locazione esiste già. Sovrascrivere?
+377 Attenzione: Manca destinazione abbinata al prodotto...
+378 Errore Gestione Record
+379 Allarme TGV in ripartenza da traccia già impegnata!
+380 Conferma Salvataggio?
+381 Inserire il numero della porta:
+382 Nodi in ingombro alle porta:
+383 Stato consensi:
+384 Direzione di ingombro:
+385 Rich.ingresso
+386 OK ingresso
+387 TGV in ingombro
+388 Apertura Parziale
+389 Coordinate grafiche del punto:
+390 Coordinata X
+391 Coordinata Y
+392 Dati Generali:
+393 Direzione per manovra Carico/Scarico:
+394 Appartenza nodo:
+395 Gestione nodo:
+396 Dati Percorso:
+397 Numero Nodo
+398 Zona Primaria
+399 Zona Secondaria
+400 Occupato ( numero del TGV )
+401
+402 1 - Avanti
+403 2 - Indietro
+404 Transito
+405 Accumulo
+406 Servizio
+407 Baia/Elevatore
+408 Normale
+409 Nodo di rientro
+410 Attraversamento
+411 ...
+412 Errore: %s,%d
+413 Pt
+414 Zp
+415 Zs
+416 Ps
+417 Av
+418 Ind
+419 Rot
+420 Ral
+421 Dist
+422
+423 Gestione curve
+424 A&ggiungi una Riga
+425 S&ottrai una Riga
+426 &Avanti
+427 &Indietro
+428 Ultimo Record!
+429 Primo Record!
+430 Cerca Nodo
+431 Digitare il Numero del Nodo:
+432 Numero Nodo errato!
+433 Copia Nodo
+434 Nodo già esistente. Sovrascrivere?
+435 Cancella Nodo
+436 Archivio Vuoto!
+437 Conferma cancellazione?
+438 Annullata
+439 EDITAZIONE
+440 INSERIMENTO
+441 Tot record: %d
+442 Punto Terminale %d Ripetuto!
+443 Cancella record
+444 Impossibile eseguire deviazioni con zero impulsi (%s=0)!
+445 Impossibile liberare i nodi di percorso!
+446 Cerca record
+447 Inserire il numero dell record
+448 Copia macchina
+449 Nessun record in archivio...
+450 UDC
+451 Sigla
+452 Locazione
+453 Priorità asservimento
+454 Identificativo %d duplicato in Macchina %d Posizione %d!
+455 Identificativo %d duplicato in Magazzino %d Posizione %d!
+456 Identificativo %d duplicato su Tgv %d!
+457 Identificativo %d duplicato in Baia %d!
+458 Dati BOX
+459 Codice
+460 Lotto
+461 Altezza
+462 Sovrapp
+463 Stato baia:
+464 dati postazioni:
+465 Tipo baia:
+466 None
+467 PRELIEVO
+468 DEPOSITO
+469 Chiamata
+470 Esclusione comunicazioni
+471 Esclusione
+472 Manca deposito/prelievo
+473 Tgv non disponibile
+474 Stato
+475 Size
+476 Sorg
+477 Dest
+478 Quantita
+479 Priorità calcolata
+480 Dati missione:
+481 Posizione attuale TGV
+482 Posizione riposo TGV
+483 Punto di attesa
+484 Puntatore ai passi programma: %X
+485 Posizione ( OffSet da Nodo ): %X
+486 Porta
+487 Macchina: %d
+488 Stato missione:
+489 0 - Nulla
+490 1 - Attiva
+491 2 - Terminata
+492 Esclusioni TGV:
+493 Esclusione da missioni
+494 Esclusione ricarica
+495 Esclusione comunicazione
+496 Semiautomatico
+497 Automatico
+498
+499
+500 Bit di stato:
+501 Tgv a 0 gradi
+502 Tgv a 90 gradi
+503 Tgv Avanti
+504 Tgv Indietro
+505 Tgv in Allarme
+506 Tgv OK programma
+507 Tgv in attesa
+508 Tgv in Automatico
+509 Tgv su nodo
+510 Tgv in riserva
+511 Tgv sotto mag.
+512 Tgv a 180 gradi
+513 Tgv a 270 gradi
+514 Tgv con car. '%c'
+515 Tgv in movimento
+516 forca '%c' fuori ing.
+517 forca '%c' chiusa
+518 NESSUNO
+519 Provenienza:
+520 Nessuna
+521 Macchina
+522 Magazzino
+523 Baia
+524 Num
+525 Situazione carico a bordo:
+526 Presenza "A":
+527 Presenza "B":
+528 dati
+529 CODICE%02d
+530 VUOTO
+531      
+532 
+533 Salva
+534 Carica
+535 Asservimento
+536 Reset allarmi
+537 MACCHINE:
+538 solo ingresso
+539 solo uscita
+540 Dati missione in corso:
+541 START
+542 STATO
+543 CHIAMATA
+544 Batteria
+545 Zona
+546 Reset missione in corso
+547 Missione in corso
+548 Stato allarmi navetta:
+549 SEMILAVORATO
+550 Cronologia asservimento:
+551 Posizionamento semplice su NODO %d
+552 AVVICINAMENTO
+553 Sconosciuta (nodo %d)
+554 CARICO DA MAC nr.%d (%s) FORCA %s
+555 SCARICO SU MAC nr.%d (%s) FORCA %s
+556 %s - CARICO DA MAG nr.%d FORCA %s
+557 %s - SCARICO SU MAG nr.%d FORCA %s
+558 CARICO DA MAGAZZINO nr.%d FORCA %s
+559 SCARICO SU MAGAZZINO nr.%d FORCA %s
+560 CARICO DA BAIA nr.%d (%s) FORCA %s
+561 SCARICO SU BAIA nr.%d (%s) FORCA %s
+562 Scaffale di destinazione
+563 Pila
+564 Piano
+565 Semiautomatico
+566 Carico/Scarico da baia
+567 Baia di destinazione
+568 Carico/Scarico da scaffale
+569 nr.%02d - TGV%d - Carico/Scarico da baia %d
+570 Elenco missioni programmate:
+571 Dati della missione in programmazione:
+572 Tgv che deve eseguire la missione
+573 Posizionamento semplice
+574 Carico/Scarico da macchina
+575 Carico/Scarico da magazzino
+576 Posizionamento semplice:
+577 Nodo di destinazione
+578 Carico/Scarico da macchina:
+579 Macchina di destinazione
+580 Carico/Scarico da magazzino:
+581 Magazzino di destiazione
+582 default
+583 ingresso
+584 uscita
+585 nr.%02d - impossibile
+586 nr.%02d - TGV%d - Posizionamento semplice al nodo %d
+587 nr.%02d - TGV%d - Carico/Scarico da macchina %d
+588 nr.%02d - TGV%d - Carico/Scarico da magazzino %d
+589 (SEMI-AUTOMATIC) - Numero del TGV non ammesso...
+590 (SEMI-AUTOMATIC) - TGV non abilitato al SemiAutomatico...
+591 (SEMI-AUTOMATIC) - Tipo di missione sconosciuta...
+592 (SEMI-AUTOMATIC) - Nodo non valido...
+593 (SEMI-AUTOMATIC) - Macchina non ammessa...
+594 (SEMI-AUTOMATIC) - Magazzino non ammesso...
+595 (SEMI-AUTOMATIC) - Manca tipo di presa TGV...
+596 (SEMI-AUTOMATIC) - Posizione del TGV errata...
+597 (SEMI-AUTOMATIC) - Baia non ammessa...
+598 (SEMI-AUTOMATIC) - Baia scaffale sconoscita...
+599
+600 SCAFFALE
+601 Ciclo Continuo
+602 Tipo operazione
+603
+604
+605
+606
+607
+608
+609
+610
+611 ERRORE DB4 TEMPI TGV: ( %s )
+612 Coordinate di ricerca dati
+613 Struttura di ricerca:
+614 INIZIO ricerca:
+615 FINE ricerca:
+616 Data:
+617 Ora:
+618
+619
+620 Dati TGV
+621 Tempi Tgv:
+622 Informazioni aggiuntive:
+623 Data di aggiornamento dati
+624 Ora di aggiornamento dati
+625 Da ultimo azzeramento
+626 AUTOMATICO
+627 SEMIAUTOMATICO
+628 POSIZIONE DI RICARICA
+629 RISERVA
+630 ALLARME
+631 MISSIONE ATTIVA
+632 Numero missioni complessive del TGV dall'ultimo azzeramento
+633 Stato della Batteria
+634 Ore trascorse da ultimo azzeramento
+635 Errore: Lettura stato batteria TGV%d !
+636 Errore: TGV %d in posizione %d fuori dal percorso!
+637 Errore: Chiamata <%d> inesistente!
+638 Errore: TGV %d in posizione attuale=0!
+639
+640 Anomalia: START=2 senza missione in esecuzione (Posizione: %d)
+641 posizione già assegnata a TGV%d...prego cambiare!
+642
+643
+644
+645 |  DATA   |  ORA   |      | MACCHINA | TIPO MISSIONE                   |NODO|FORCHE|
+646 |  DATA   |  ORA   | LOCAZ | TIPO CHIAMATA                                   |
+647
+648
+649 ATTENZIONE: Inserimento dati in formato errato...
+650 "ATTENZIONE: manca tipo provenienza o numero provenienza..."
+651 Non è possibile Resettare la missione del TGV %d, Nodo %d Punto Notevole.
+652 Non è possibile Resettare la missione del TGV %d, Nodo %d occupato.
+653
+654
+655
+656
+657
+658 Box riservato:
+659 Box richiesti:
+660 Macchina nr.%d
+661 Numero
+662 Priorità
+663 Configurazione comunicazioni:
+664 Stato segnali macchina da PLC:
+665 Tipo macchina:
+666 Stato macchina:
+667 Dati stazione:
+668 Stato stazione:
+669 Dati box su singola posizione:
+670 Stato segnali stazione da PLC:
+671 Consensi TGV:
+672 Magazzini abbinati:
+673 Nodo
+674 Capacità
+675 Urgenza
+676 Esclusione
+677 No codice
+678 No magazzino
+679 Richiesta
+680 Espulsione
+681 Codice
+682
+683 Stato
+684 Tipo 
+685 Richiesta ing.
+686 OK accesso
+687 TGV in ingombro
+688 Fine operazione
+689 OK forche alte
+690 dati posizione nr.%d
+691 None
+692 TIPO1
+693 TIPO2
+694 TIPO3
+695 TIPO4
+696 TIPO5
+697 Esclusione comunicazione
+698 Fine produzione
+699 per PIENI
+700 per VUOTI
+701 Lista manuale carrelli
+702 Blocco sovrapp. in rulliera
+703 Consensi PLC:
+704 ID Plc
+705 Blocco
+706 Tutto Pieno
+707 Pallet
+708 Carwash
+709 Basso
+710 Ruotato
+711 Configurazione presa
+712 Altezza Baia
+713 Sollevam.
+714 Gruppo appartenenza
+715 GRUPPI BAIE
+716 Desc
+717 Peso
+718 Turno
+719
+720 Data/Ora
+721	Assegnazione
+722 Offset al nodo
+723 Profondita
+724 Num.Box 
+725 Tot.Box
+726 Pal.Sovrapponibile
+727 Pal.Basso
+728 Tipo Pallet
+729 Dati Presa
+730
+731 TIPI BOX
+732 Tipo Box
+733 Dimensioni
+734 Lunghezza
+735 Larghezza
+736 Altezza
+737 Config.deposito in magazzino
+738 Offset da nodo in magazz.(cm)
+739 Distanza palette (cm)
+740 Costante per arrotondamento
+741
+742 Escludi PLC
+743 anticipo richiesta
+744 porta interbloccata
+745 Porta in blocco
+746 TGV in arrivo
+747 Nodi semaforo porte
+748 TGV con carico
+749
+750
+

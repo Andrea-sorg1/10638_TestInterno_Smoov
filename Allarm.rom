@@ -1,0 +1,50 @@
+00 (LR600) - alarma rotatie                                                   .
+01 (LR601) - alarma ridicare inalta                                           .
+02 (LR602) - alarma ridicare joasa                                            .
+03 (LR603) - alarma traseu  pierdut in directia inainte                       .
+04 (LR604) - alarma traseu  pierdut in directia inapoi                        .
+05 (LR605) - alarma TGVul nu se afla in pozitie                               .
+06 (LR606) - alarma miscare inainte                                           .
+07 (LR607) - alarma miscare inapoi                                            .
+08 (LR608) - alarma sosire in pozitie cu viteza                               .
+09 (LR609) - alarma control ridicare urcare                                   .
+10 (LR610) - alarma control ridicare coborare                                 .
+11 (LR611) - alarma prezenta vagonet                                          .
+12 (LR612) - alarma in timpul schimbarii vagonetului                          .
+13 (LR613) - alarma pollicino                                                 .
+14 (LR614) - alarma lipsa vagonet in parcare                                  .
+15 (LR615) - alarma laser scanner                                             .
+16 (LR700) - alarma actionare 1                                               .
+17 (LR701) - alarma actionare 2                                               .
+18 (LR702) - alarma baterii descarcate                                        .
+19 (LR703) - alarma nod citit in avans                                        .
+20 (LR704) - alarma Radar Frontal                                             .
+21 (LR705) - alarma vagonet in parcare in pozitie gresita                     .
+22 (LR706) - alarma vagoneti prea apropiati                                   .
+23 (LR707) - alarma Tgv in afara nodului imposibila rotatia                   .
+24 (LR708) - alarma fise traseu                                               .
+25 (LR709) - liber                                                            .
+26 (LR710) - alarma Contor Encoder                                            .
+27 (LR711) - alarma nod necitit                                               .
+28 (LR712) - lipsa ciclu apasati start                                        .
+29 (LR713) - alarma incarcatorul de baterii nu este in functiune              .
+30 (LR714) - agv pe manual                                                    .
+31 (LR715) - alarma intrare masina pentru masina in alarma                    .
+32 (LR800) - alarma deriva ugn                                                .
+33 (LR801) - alarma incetinire laser                                          .
+34 (LR802) - alarma serial greutate                                           .
+35 (LR803) - alarma laterala                                                  .
+36 (LR804) - alarma ciuperci                                                  .
+37 (LR805) - alarma serial driver                                             .
+38 (LR806) - alarma pastila termica                                           .
+39 (LR807) - alarma resolver                                                  .
+40 (LR808) - alarma senzor curent                                             .
+41 (LR809) - alarma Voltaj depasit                                            .
+42 (LR810) - alarma temperatura disipator                                     .
+43 (LR811) - alarma curent                                                    .
+44 (LR812) - alarma urmarire                                                  .
+45 (LR813) - alarma voltaj prea mic                                           .
+46 (LR814) - alarma eprom                                                     .
+47 (LR815) - asteptare intrare masina pentru masina in alarma                 .
+48 (     ) - liber                                                            .
+49 (     ) - liber                                                            .

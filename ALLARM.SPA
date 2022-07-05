@@ -1,0 +1,50 @@
+00 (LR600) - alarma bloqueo rotacion                                          .
+01 (LR601) - alarma tiempo subida pistones                                    .
+02 (LR602) - alarma tiempo bajada pistones                                    .
+03 (LR603) - alarma hilo perdido en direccion adelante                        .
+04 (LR604) - alarma hilo perdido en direccion atras                           .
+05 (LR605) - alarma TGV no en posicion                                        .
+06 (LR606) - alarma movimiento adelante                                       .
+07 (LR607) - alarma movimiento atras                                          .
+08 (LR608) - alarma llegada a la posicion en rapida                           .
+09 (LR609) - alarma control subida pistones                                   .
+10 (LR610) - alarma control bajada pistones                                   .
+11 (LR611) - alarma presencia box                                             .
+12 (LR612) - alarma durante cambio box                                        .
+13 (LR613) - alarma pollicino                                                 .
+14 (LR614) - alarma falta box en el almacen                                   .
+15 (LR615) - alarma laser esscaner                                            .
+16 (LR700) - alarma accionamento 1                                            .
+17 (LR701) - alarma accionamento 2                                            .
+18 (LR702) - alarma baterias descargadas                                      .
+19 (LR703) - alarma nodo leido anticipadamente                                .
+20 (LR704) - alarma seguridad radar Frontal                                   .
+21 (LR705) - alarma Box en almacen fuera de posicion                          .
+22 (LR706) - alarma Box demasiado cerca                                       .
+23 (LR707) - alarma TGV fuera de nodo,imposible rotacion                      .
+24 (LR708) - alarma tarjeta lectura hilo                                      .
+25 (LR709) - libre                                                            .
+26 (LR710) - alarma Contador encoder                                          .
+27 (LR711) - alarma nodo no leido                                             .
+28 (LR712) - alarma falta ciclo pulsar star                                   .
+29 (LR713) - alarma cargador de bateria no en funcionamiento                  .
+30 (LR714) - tgv en manual                                                    .
+31 (LR715) - alarma entrada a maquina por maquina alarmada                    .
+32 (LR800) - alarma deriva ugn                                                .
+33 (LR801) - alarma desaceleramiento por precencia de obstaculo               .
+34 (LR802) - alarma serial peso                                               .
+35 (LR803) - alarma barra de seguridad                                        .
+36 (LR804) - alarma hongos                                                    .
+37 (LR805) - alarma alto consumo de corriente driver                          .
+38 (LR806) - alarma pastilla termica                                          .
+39 (LR807) - alarma resolver                                                  .
+40 (LR808) - alarma sensor corriente                                          .
+41 (LR809) - alarma sobretension                                              .
+42 (LR810) - alarma temperatura disipador                                     .
+43 (LR811) - alarma corriente                                                 .
+44 (LR812) - alarma seguimiento                                               .
+45 (LR813) - alarma baja tension                                              .
+46 (LR814) - alarma eprom                                                     .
+47 (LR815) - espera de ingreso a la maquina por maquina alarmada              .
+48 (     ) - libre                                                            .
+49 (     ) - libre                                                            .

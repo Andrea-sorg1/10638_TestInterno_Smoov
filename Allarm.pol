@@ -1,0 +1,50 @@
+00 (LR600) - alarm rotacja                                                .
+01 (LR601) - alarm podnoszenie gora                                       .
+02 (LR602) - alarm podnoszenie dol                                        .
+03 (LR603) - alarm zgubiony slad do przodu                                .
+04 (LR604) - alarm zgubiony slad do tylu                                  .
+05 (LR605) - alarm TGV glowica nie na pozycji                             .
+06 (LR606) - alarm suw do przodu                                          .
+07 (LR607) - alarm suw do tylu                                            .
+08 (LR608) - alarm szybki dojazd do pozycji                               .
+09 (LR609) - alarm kontrola podnoszenie ruch w gore                       .
+10 (LR610) - alarm kontrola podnoszenie ruch w dol                        .
+11 (LR611) - alarm obecnosc box                                           .
+12 (LR612) - alarm podczas zmiany box                                     .
+13 (LR613) - alarm wozek                                                  .
+14 (LR614) - alarm brak box na parkingu                                   .
+15 (LR615) - alarm laser scanner                                          .
+16 (LR700) - alarm uruchomienie 1                                         .
+17 (LR701) - alarm uruchomienie 2                                         .
+18 (LR702) - alarm baterie wyladowane                                     .
+19 (LR703) - alarm wezel odczytany za wczesnie                            .
+20 (LR704) - alarm Radar Przedni                                          .
+21 (LR705) - alarm Box na parkingu nie na pozycji                         .
+22 (LR706) - alarm Box za blisko                                          .
+23 (LR707) - alarm Tgv glowica poza wezlem niemoznosc rotacji             .
+24 (LR708) - alarm karty sladowe                                          .
+25 (LR709) - wolny                                                        .
+26 (LR710) - alarm Licznik Encoder                                        .
+27 (LR711) - alarm wezel nieodczytany                                     .
+28 (LR712) - brak cyklu nacisnac start                                    .
+29 (LR713) - alarm ladowarka nie wlaczone                                 .
+30 (LR714) - agv reczny                                                   .
+31 (LR715) - alarm wejscie maszyny z powodu maszyny w alarmie             .
+32 (LR800) - alarm odchyl ugn                                             .
+33 (LR801) - alarm spowolnienie laser                                     .
+34 (LR802) - alarm szeregowy ciezar                                       .
+35 (LR803) - alarm szyny zbiorcze                                         .
+36 (LR804) - alarm przyciski                                              .
+37 (LR805) - alarm driver szeregowy                                       .
+38 (LR806) - alarm masa czynna cieplna                                    .
+39 (LR807) - alarm przelicznik                                            .
+40 (LR808) - alarm czujnik napiecia                                       .
+41 (LR809) - alarm napiecie za wysokie                                    .
+42 (LR810) - alarm temperatura niecki wypadowej                           .
+43 (LR811) - alarm napiecie                                               .
+44 (LR812) - alarm nadazanie                                              .
+45 (LR813) - alarm napiecie za niskie                                     .
+46 (LR814) - alarm eprom                                                  .
+47 (LR815) - oczekiwanie wejscie maszyny z powodu maszyny w alarmie       .
+48 (     ) - wolny                                                        .
+49 (     ) - wolny                                                        .

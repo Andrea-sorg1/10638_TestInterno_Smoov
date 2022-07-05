@@ -1,0 +1,160 @@
+00 (1006.00) - Alarme : Rotation
+01 (1006.01) - Alarme : Libre
+02 (1006.02) - Alarme : Tgv pas en position - Placez-le manuellement sur le nœud
+03 (1006.03) - Alarme : comptage d’encodeur, Tirage KO dans la direction vers l'avant
+04 (1006.04) - Alarme : comptage d’encodeur, Tirage KO dans la direction vers l'arrière 
+05 (1006.05) - Alarme : montée des fourches
+06 (1006.06) - Alarme : descente des fourches
+07 (1006.07) – Alarme : Timeout unité de commande de groupe de fourche
+08 (1006.08) - Alarme : Libre
+09 (1006.09) - Alarme : Manque Start
+10 (1006.10) - Alarme : Chargement absent ou hors de position
+11 (1006.11) - Alarme : Sécurité brisée - photo de devant 
+12 (1006.12) - Alarme : actionnement 1 tirage 
+13 (1006.13) - Alarme : actionnement 2 direction
+14 (1006.14) - Alarme : Batterie faible
+15 (1006.15) - Alarme : Sécurité brisée - bandes latérale
+16 (1007.00) - Alarme : Sécurité brisée - Bouton d'arrêt d'urgence
+17 (1007.01) - Alarme : Libre
+18 (1007.02) - Alarme : Chargeur KO pour le changement automatique
+19 (1007.03) - Alarme : Chargeur KO
+20 (1007.04) - Alarme : Photocellules de sécurité latérale
+21 (1007.05) - Alarme : Calcul encodeur tirage KO 
+22 (1007.06) - Alarme : Température excessive du moteur
+23 (1007.07) - Alarme : Timeout communication actionnement 1 tirage
+24 (1007.08) - Alarme : Procédure de mise à zéro encodeur de pinces en cours
+25 (1007.09) - Alarme : Timeout communication laser de conduite
+26 (1007.10) - Alarme : Libre
+27 (1007.11) - Alarme : Libre
+28 (1007.12) - Alarme : Blocage laser de conduite 
+29 (1007.13) - Alarme : unité de commande sécurité à restaurer
+30 (1007.14) - Alarme : Tgv en manuel
+31 (1007.15) - Alarme : Timeout communication actionnement 2 direction
+32 (1008.00) - Alarme : Tgv n'est pas inséré sur le nœud - repositionner manuellement
+33 (1008.01) - Alarme : Libre
+34 (1008.02) - Alarme : Libre
+35 (1008.03) - Alarme : Timeout rotation convoyeurs à rouleaux
+36 (1008.04) - Alarme : Actionnement unité de commande soulèvement en bloc 
+37 (1008.05) - Alarme : Monté fourches à l'intérieur de l'étagère
+38 (1008.06) - Alarme : recherche altitude de division incorrecte 
+39 (1008.07) - Alarme : Photocellule de superposition toujours en lecture
+40 (1008.08) - Alarme : Libre
+41 (1008.09) - Alarme : Tgv en poussée palette à l'intérieur de l'étagère
+42 (1008.10) - Alarme : Erreur de hauteur
+43 (1008.11) - Alarme : fermeture des fourches manquées  
+44 (1008.12) - Alarme : ouverture des fourches manquées  
+45 (1008.13) - Alarme : Actionnement convoyeurs 1 en bloc 
+46 (1008.14) - Alarme : Libre
+47 (1008.15) - Alarme : Usure excessive des roues 
+48 (1009.00) - Alarme : Libre
+49 (1009.01) - Alarme : Libre
+50 (1009.02) - Alarme : ouverture pince manquées  
+51 (1009.03) - Alarme : Fermeture pince manquées  
+52 (1009.04) - Alarme : Encodeur pince inférieur KO 
+53 (1009.05) - Alarme : Encodeur pince inférieur KO
+54 (1009.06) - libre
+55 (1009.07) - libre
+56 (1009.08) - libre
+57 (1009.09) - libre
+58 (1009.10) - libre
+59 (1009.11) - libre
+60 (1009.12) - libre
+61 (1009.13) - libre
+62 (1009.14) - Alarme: Encodeur ouverture fermeture des fourches KO
+63 (1009.15) - Alarme: Timeout rotation fourches 
+61 (1010.00) - Alarme: Libre
+65 (1010.01) - Alarme: libre
+66 (1010.02) - Alarme: libre
+67 (1010.03) - Alarme: libre
+68 (1010.04) - libre
+69 (1010.05) - libre 
+70 (1010.06) - libre
+71 (1010.07) - libre
+72 (1010.08) - libre
+73 (1010.09) - libre 
+74 (1010.10) - libre
+75 (1010.11) - libre
+76 (1010.12) - libre
+77 (1010.13) - libre
+78 (1010.14) - libre
+79 (1010.15) - libre
+80 (1011.00) - Alarme : Bandes avant 
+81 (1011.01) - Alarme : Bande droite 
+82 (1011.02) - Alarme : Bande arrière
+83 (1011.03) - Alarme : Bande gauche 
+84 (1011.04) - Alarme : Laser droite 
+85 (1011.05) - Alarme : Laser arrière
+86 (1011.06) - Alarme : Laser gauche 
+87 (1011.07) - Alarme : Laser avant 
+88 (1011.08) - Alarme : Bouton d'arrêt d'urgence
+89 (1011.09) - Alarme : obstacle Sur fourchette droit
+90 (1011.10) - Alarme : obstacle Sur fourchette gauche 
+91 (1011.11) - libre
+92 (1011.12) - libre
+93 (1011.13) - libre
+94 (1011.14) - Alarme: Intervention du capteur de sécurité à hauteur de fourche
+95 (1011.15) - Alarme : Contrôle de vitesse
+96 (1012.00) - Alarme : Manque de consentement de la part de la machine
+97 (1012.01) - Alarme : Blocage entrée changement batterie automatique
+98 (1012.02) - Alarme : Sécurité brisée - Scanner laser latérale arrière
+99 (1012.03) - Alarme : Blocage entrée machine 
+100 (1012.04) - Alarme : Laser côté Droit
+101 (1012.05) - Alarme : Laser arrière
+102 (1012.06) - Alarme : Laser côté Gauche
+103 (1012.07) - Alarme : Laser avant
+104 (1012.08) - libre
+105 (1012.09) - libre
+106 (1012.10) - libre
+107 (1012.11) - libre
+108 (1012.12) - libre
+109 (1012.13) - Alarme : Alarme pour restaurer pilz
+110 (1012.14) - libre
+111 (1012.15) - libre
+112 (1013.00) - Alarme: alarme manque réflecteur
+113 (1013.01) - Alarme: Mauvaise navigation
+114 (1013.02) - Alarme : Ralentissement du scanner laser pour la lecture d'obstacles
+115 (1013.03) - Alarme: Timeout raspberry
+116 (1013.04) - Alarme: Timeout Nav 350
+117 (1013.05) - Alarme : Manque synchro avec Nav 350
+118 (1013.06) - libre
+119 (1013.07) - Alarme : Trace en Arrière
+120 (1013.08) - Alarme : Trace en Avant
+121 (1013.09) - libre
+122 (1013.10) - libre
+123 (1013.11) - libre
+124 (1013.12) - libre
+125 (1013.13) - libre
+126 (1013.14) - libre
+127 (1013.15) - libre
+128 (1014.00) - libre
+129 (1014.01) - libre
+130 (1014.02) - libre
+131 (1014.03) - Alarme : Vérifier le module déblocage des freins
+132 (1014.04) - Alarme : Panier en saillie sur les rouleaux
+133 (1014.05) - Alarme : Portes armoire électrique ouvert
+134 (1014.06) - Alarme : encodeur direction   KO
+135 (1014.07) - Alarme : Phases Encodeur Échangées
+136 (1014.08) - Alarme : direction en extra course
+137 (1014.09) - Libre
+138 (1014.10) - Alarme : Nœud non lu ou mauvais centrage
+139 (1014.11) - Alarme : Mauvaise position dispositif présence charge
+140 (1014.12) - Alarme : TGV non sur la bonne voie -Direction arrière
+141 (1014.13) - Alarme : TGV non sur la bonne voie -Direction avant
+142 (1014.14) - Alarme : Calcul encodeur des fourches KO
+143 (1014.15) - Alarme : Blocage groupe fourche à cause altitude incorrect 
+144 (1015.00) - Alarme : Demande de rèduction à zèro des groupes de fourches
+145 (1015.01) - Alarme : Groupe fourches procèdure de rèinitialisation non souhalitès
+146 (1015.02) - libre
+147 (1015.03) - libre
+148 (1015.04) - libre
+149 (1015.05) - libre
+150 (1015.06) - libre
+151 (1015.07) - libre
+152 (1015.08) - libre
+153 (1015.09) - libre
+154 (1015.10) - libre
+155 (1015.11) - libre
+156 (1015.12) - libre
+157 (1015.13) - libre
+158 (1015.14) - libre
+159 (1015.15) - libre

@@ -1,0 +1,56 @@
+00 (LR600) - Alarm Rotationssperre                                            .
+01 (LR601) - Alarm Hub oben                                                   .
+02 (LR602) - Alarm Hub unten                                                  .
+03 (LR603) - Alarm Spur verloren in Vorwärtsrichtung                          .
+04 (LR604) - Alarm Spur verloren in Rückwärtsrichtung                         .
+05 (LR605) - Alarm TGV nicht positioniert                                     .
+06 (LR606) - Alarm Vorwärtsbewegung                                           .
+07 (LR607) - Alarm Rückwärtsbewegung                                          .
+08 (LR608) - Alarm Schnell-Einlauf auf Position                               .
+09 (LR609) - Alarm Hubkontrolle Aufstieg                                      .
+10 (LR610) - Alarm Hubkontrolle Abstieg                                       .
+11 (LR611) - Alarm Steuerung                                                  .
+12 (LR612) - Alarm bei Boxwechsel                                             .
+13 (LR613) - Alarm Lagerende                                                  .
+14 (LR614) - Alarm Suche nicht auf Gleis vorhandene Box                       .
+15 (LR615) - Alarm Anschlagleisten                                            .
+16 (LR700) - Alarm Antrieb 1                                                  .
+17 (LR701) - Alarm Antrieb 2                                                  .
+18 (LR702) - Alarm Batterien erschöpft                                        .
+19 (LR703) - Alarm Zentrierung Position                                       .
+20 (LR704) - Alarm Sicherung Frontradar                                       .
+21 (LR705) - Alarm Box auf Parkstelle falsch positioniert                     .
+22 (LR706) - Alarm Boxen zu nah                                               .
+23 (LR707) - Alarm Tgv außerhalb Knotenpunkt Rotation unmöglich               .
+24 (LR708) - Alarm Kollisionsmikro                                            .
+25 (LR709) - frei                                                             .
+26 (LR710) - Alarm Zählungssensor                                             .
+27 (LR711) - Alarm Knotenpunkt nicht gelesen                                  .
+28 (LR712) - Zyklusmangel Start drücken                                       .
+29 (LR713) - Alarm Ladegerät                                                  .
+30 (LR714) - Tgv im Manuell-Zustand                                           .
+31 (LR715) - Alarm Maschine gesperrt                                          .
+32 (LR800) - Alarm Ugn Verschiebung                                           .
+33 (LR801) - Alarm Radarverlangsamung                                         .
+34 (LR802) - Serienalarm Gewicht                                              .
+35 (LR803) - Alarm Sammelschiene                                              .
+36 (LR804) - Alarm Pilzknöpfe                                                 .
+37 (LR805) - Serienalarm Driver                                               .
+38 (LR806) - Alarm Thermopastille                                             .
+39 (LR807) - Alarm Resolver                                                   .
+40 (LR808) - Alarm Stromsensor                                                .
+41 (LR809) - Alarm over Voltage                                               .
+42 (LR810) - Alarm Temperatur Ableiter                                        .
+43 (LR811) - Alarm Strom                                                      .
+44 (LR812) - Alarm Nachfolger                                                 .
+45 (LR813) - Alarm under Voltage                                              .
+46 (LR814) - Alarm Eprom                                                      .
+47 (LR815) - Warten Maschine gesperrt                                         .
+48 (     ) - frei                                                             .
+49 (     ) - frei                                                             .
+
+
+NOTA DELLA TRADUTTRICE:
+
+15 andrebbe cambiato in : Alarm Laser Scanner
+19 andrebbe cambiato in : Alarm Knotenpunkt zu früh abgelesen

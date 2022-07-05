@@ -1,0 +1,50 @@
+00 (LR600) - rotation alarm                                                   .
+01 (LR601) - lifting up alarm                                                 .
+02 (LR602) - lifting low alarm                                                .
+03 (LR603) - track lost in forward direction alarm                            .
+04 (LR604) - track lost in reverse direction alarm                            .
+05 (LR605) - AGV not in position alarm                                        .
+06 (LR606) - forward up photocell safety alarm                                .
+07 (LR607) - backward up photocell safety alarm                               .
+08 (LR608) - alarm air cooler device check gas pressure                       .
+09 (LR609) - lifting system up sensor alarm                                   .
+10 (LR610) - lifting system down sensor alarm                                 .
+11 (LR611) - Presence of box alarm                                            .
+12 (LR612) - alarm during box change                                          .
+13 (LR613) - main magnet card alarm                                           .
+14 (LR614) - alarm  for box not in position                                   .
+15 (LR615) - safety laser scanner clean dusty or dirty lens                   .
+16 (LR700) - drive inverter 1 alarm                                           .
+17 (LR701) - drive inverter 2 alarm                                           .
+18 (LR702) - batterie low alarm                                               .
+19 (LR703) - position centering alarm                                         .
+20 (LR704) - front radar safety system alarm                                  .
+21 (LR705) - box on parking area out of position alarm                        .
+22 (LR706) - boxes too near alarm                                             .
+23 (LR707) - TGV off node alarm, rotation impossible                          .
+24 (LR708) - magnet track card alarm                                          .
+25 (LR709) - sides photocell alarm                                            .
+26 (LR710) - Counter movement alarm tgv blocked                               .
+27 (LR711) - node not read alarm                                              .
+28 (LR712) - no cycle, press start                                            .
+29 (LR713) - battery charger alarm                                            .
+30 (LR714) - TGV in manual mode                                               .
+31 (LR715) - TGV entrance alarm for machine in emergency stop                 .
+32 (LR800) - ugn alarm                                                        .
+33 (LR801) - laser slow alarm                                                 .
+34 (LR802) - weight serial alarm                                              .
+35 (LR803) - bumpers alarm                                                    .
+36 (LR804) - emergency alarm                                                  .
+37 (LR805) - inverters off becouse of the safety serial cable alarm           .
+38 (LR806) - thermal inverter pad alarm                                       .
+39 (LR807) - resolver inverter  alarm                                         .
+40 (LR808) - power inverter sensor alarm                                      .
+41 (LR809) - over voltage inverter  alarm                                     .
+42 (LR810) - temperature dissipater inverter  alarm                           .
+43 (LR811) - power inverter alarm                                             .
+44 (LR812) - tracking inverter alarm                                          .
+45 (LR813) - under voltage inverter  alarm                                    .
+46 (LR814) - eprom inverter alarm                                             .
+47 (LR815) - Tgv entrance wait for machine in emergency stop                  .
+48 (     ) - not used                                                         .
+49 (     ) - not used                                                         .
