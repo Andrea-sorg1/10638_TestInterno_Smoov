@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="Smoov.exe"/>
+    <OBJFILES value="Smoov.obj SfondoGrafico_TLB.obj Main.obj Layout.obj Stato.obj Graphvar.obj 
+      Password.obj Messagg.obj Comunica.obj UdpServer1.obj InitCom.obj 
+      AlgoScambio.obj AlgoDde.obj SQLDB.obj DBSeq.obj Slc500.obj 
+      ComunicaSiemens.obj AllenBViaVbOpc.obj Nodo.obj Agv.obj Process.obj 
+      Prchiama.obj Prcarica.obj Mag.obj Box.obj Remoto.obj Agvwin.obj 
+      Asservi.obj Laser.obj Mapping.obj Nodowin.obj Magwin.obj Baiwin.obj 
+      Boxwin.obj Listagen.obj ListaCar.obj ElCar2.obj AbbPLC.obj TipiBox.obj 
+      PorteImp.obj SemiAuto.obj TestP.obj TestPlc1.obj TestPlc2.obj TestPlc3.obj 
+      TimTgv.obj StatTgv.obj Input.obj Video.obj Visfile.obj XYNodi.obj 
+      SrvTcpAndroid.obj DisRiflettori.obj StatoBaiewin.obj StatoMagwin.obj 
+      Impianti.obj Batwin.obj Stampa.obj GrpDest.obj GruppiBa.obj 
+      IngombroAgv.obj StatTgvEstesa.obj DBGridGen.obj Thread1.obj Macwin.obj 
+      Asrv.obj"/>
+    <RESFILES value="Smoov.res"/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES) Main.dfm Layout.dfm Stato.dfm Password.dfm Messagg.dfm 
+      UdpServer1.dfm InitCom.dfm SQLDB.dfm Agvwin.dfm Asservi.dfm Mapping.dfm 
+      Nodowin.dfm Magwin.dfm Baiwin.dfm Boxwin.dfm Listagen.dfm ListaCar.dfm 
+      ElCar2.dfm AbbPLC.dfm TipiBox.dfm PorteImp.dfm SemiAuto.dfm TestP.dfm 
+      TestPlc1.dfm TestPlc2.dfm TestPlc3.dfm StatTgv.dfm Input.dfm Video.dfm 
+      Visfile.dfm XYNodi.dfm SrvTcpAndroid.dfm DisRiflettori.dfm 
+      StatoBaiewin.dfm StatoMagwin.dfm Batwin.dfm GrpDest.dfm GruppiBa.dfm 
+      StatTgvEstesa.dfm DBGridGen.dfm Macwin.dfm"/>
+    <LIBFILES value="IcsBcb60Algo2013.lib libnodave.lib LibWeb2021.lib TcAsdDll.lib"/>
+    <LIBRARIES value="bdecds.lib dbexpress.lib cds.lib dsnap.lib adortl.lib XLSMini_CPP6.lib 
+      IcsBcb60Algo2013.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib nmfast.lib vclx.lib dbrtl.lib vcldb.lib bdertl.lib 
+      IcsBcb60Algo2013.lib XLSMini_CPP6.lib adortl.lib bcbsmp.lib tee.lib 
+      dsnap.lib cds.lib dbexpress.lib bdecds.lib"/>
+    <PACKAGES value="vclx.bpi rtl.bpi vcl.bpi dbrtl.bpi vcldb.bpi bdertl.bpi vcldbx.bpi 
+      bcbsmp.bpi dclocx.bpi qrpt.bpi teeui.bpi vclsmp.bpi teedb.bpi tee.bpi 
+      ibsmp.bpi nmfast.bpi inetdb.bpi inet.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value=""/>
+    <SYSDEFINES value="NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="Smoov.cpp"/>
+    <INCLUDEPATH value="$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="$(BCB)\bin;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-pch -w-par -w-8027 -w-8026"/>
+    <WARNOPTSTR value=""/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-I$(BCB)\projects -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -Tkh30000 -X- -r- -a1 -b -k -y -v 
+      -vi- -c -tW -tWM"/>
+    <CFLAG2 value=""/>
+    <CFLAG3 value=""/>
+    <PFLAGS value="-$YD -$W -$O- -$A8 -v -M -JPHNE"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zd"/>
+    <LFLAGS value="-D&quot;&quot; -V5.0 -S:0x400000 -aa -Tpe -x -Gn -v"/>
+    <IFLAGS value=""/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0w32.obj $(PACKAGES) sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="Smoov.res" FORMNAME="" UNITNAME="Smoov.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Smoov.cpp" FORMNAME="" UNITNAME="Smoov" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="IcsBcb60Algo2013.lib" FORMNAME="" UNITNAME="IcsBcb60Algo2013.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="libnodave.lib" FORMNAME="" UNITNAME="libnodave.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SfondoGrafico_TLB.cpp" FORMNAME="" UNITNAME="SfondoGrafico_TLB" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Main.cpp" FORMNAME="FormMain" UNITNAME="Main" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Layout.cpp" FORMNAME="FormLayout" UNITNAME="Layout" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Stato.cpp" FORMNAME="FormStato" UNITNAME="Stato" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Graphvar.cpp" FORMNAME="" UNITNAME="Graphvar" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Password.cpp" FORMNAME="FormPassword" UNITNAME="Password" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Messagg.cpp" FORMNAME="FormMessaggi" UNITNAME="Messagg" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Comunica.cpp" FORMNAME="" UNITNAME="Comunica" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="UdpServer1.cpp" FORMNAME="FormServerUDP" UNITNAME="UdpServer1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="InitCom.cpp" FORMNAME="FormSetCom" UNITNAME="InitCom" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="AlgoScambio.cpp" FORMNAME="" UNITNAME="AlgoScambio" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="AlgoDde.cpp" FORMNAME="" UNITNAME="AlgoDde" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SQLDB.cpp" FORMNAME="FormSQLDB" UNITNAME="SQLDB" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DBSeq.cpp" FORMNAME="" UNITNAME="DBSeq" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Slc500.cpp" FORMNAME="" UNITNAME="Slc500" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ComunicaSiemens.cpp" FORMNAME="" UNITNAME="ComunicaSiemens" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="AllenBViaVbOpc.cpp" FORMNAME="" UNITNAME="AllenBViaVbOpc" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Nodo.cpp" FORMNAME="" UNITNAME="Nodo" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Agv.cpp" FORMNAME="" UNITNAME="Agv" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Process.cpp" FORMNAME="" UNITNAME="Process" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Prchiama.cpp" FORMNAME="" UNITNAME="Prchiama" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Prcarica.cpp" FORMNAME="" UNITNAME="Prcarica" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Mag.cpp" FORMNAME="" UNITNAME="Mag" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Box.cpp" FORMNAME="" UNITNAME="Box" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Remoto.cpp" FORMNAME="" UNITNAME="Remoto" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Agvwin.cpp" FORMNAME="FormTgv" UNITNAME="Agvwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Asservi.cpp" FORMNAME="FormAsservi" UNITNAME="Asservi" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Laser.cpp" FORMNAME="" UNITNAME="Laser" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Mapping.cpp" FORMNAME="FormMappa" UNITNAME="Mapping" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Nodowin.cpp" FORMNAME="FormNodi" UNITNAME="Nodowin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Magwin.cpp" FORMNAME="FormMagaz" UNITNAME="Magwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Baiwin.cpp" FORMNAME="FormBaie" UNITNAME="Baiwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Boxwin.cpp" FORMNAME="FormBox" UNITNAME="Boxwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Listagen.cpp" FORMNAME="FormListagen" UNITNAME="Listagen" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ListaCar.cpp" FORMNAME="FormListaCar" UNITNAME="ListaCar" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ElCar2.cpp" FORMNAME="FormElBox" UNITNAME="ElCar2" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="AbbPLC.cpp" FORMNAME="FormAbbPlc" UNITNAME="AbbPLC" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TipiBox.cpp" FORMNAME="FormTipiBox" UNITNAME="TipiBox" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PorteImp.cpp" FORMNAME="FormPorteImp" UNITNAME="PorteImp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SemiAuto.cpp" FORMNAME="FormSemiAuto" UNITNAME="SemiAuto" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TestP.cpp" FORMNAME="FormTest" UNITNAME="TestP" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TestPlc1.cpp" FORMNAME="FormTestPlc" UNITNAME="TestPlc1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TestPlc2.cpp" FORMNAME="FormTestPlc2" UNITNAME="TestPlc2" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TestPlc3.cpp" FORMNAME="FormTestPlc3" UNITNAME="TestPlc3" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TimTgv.cpp" FORMNAME="" UNITNAME="TimTgv" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="StatTgv.cpp" FORMNAME="FormStatTgv" UNITNAME="StatTgv" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Input.cpp" FORMNAME="FormInput" UNITNAME="Input" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Video.cpp" FORMNAME="FormVideo" UNITNAME="Video" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Visfile.cpp" FORMNAME="FormVisualizzaFile" UNITNAME="Visfile" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="XYNodi.cpp" FORMNAME="FormXYNodi" UNITNAME="XYNodi" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SrvTcpAndroid.cpp" FORMNAME="FormSrvTcpAndroid" UNITNAME="SrvTcpAndroid" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DisRiflettori.cpp" FORMNAME="FormDisRiflettori" UNITNAME="DisRiflettori" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="StatoBaiewin.cpp" FORMNAME="FormStatoBaie" UNITNAME="StatoBaiewin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="StatoMagwin.cpp" FORMNAME="FormStatoMagaz" UNITNAME="StatoMagwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Impianti.cpp" FORMNAME="" UNITNAME="Impianti" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Batwin.cpp" FORMNAME="FormCambioBatteria" UNITNAME="Batwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Stampa.cpp" FORMNAME="" UNITNAME="Stampa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Variabil.h" FORMNAME="" UNITNAME="Variabil.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TecnoFer.h" FORMNAME="" UNITNAME="TecnoFer.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GrpDest.cpp" FORMNAME="FormGrpDest" UNITNAME="GrpDest" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GruppiBa.cpp" FORMNAME="FormGruppiBa" UNITNAME="GruppiBa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="IngombroAgv.cpp" FORMNAME="" UNITNAME="IngombroAgv" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="StatTgvEstesa.cpp" FORMNAME="FormStatTgvEstesa" UNITNAME="StatTgvEstesa" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="DBGridGen.cpp" FORMNAME="FormDBGridGen" UNITNAME="DBGridGen" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Thread1.cpp" FORMNAME="" UNITNAME="Thread1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="LibWeb2021.lib" FORMNAME="" UNITNAME="LibWeb2021.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Macwin.cpp" FORMNAME="FormMacchine" UNITNAME="Macwin" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="TcAsdDll.lib" FORMNAME="" UNITNAME="TcAsdDll.lib" CONTAINERID="LibTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Asrv.cpp" FORMNAME="" UNITNAME="Asrv" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1040
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+c:\program files (x86)\borland\cbuilder6\Bin\dclite60.bpl=Borland Integrated Translation Environment
+C:\Program Files (x86)\Borland\CBuilder6\Bin\IcsBcb60.bpl=IcsBcb60
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=$(BCB)\projects;$(BCB)\include;$(BCB)\include\vcl
+Item1=D:\Clienti\TecnoFerrari\AllGlass\a;c:\programmi\borland\cbuilder6\projects;$(BCB)\include;$(BCB)\include\vcl
+Item2=c:\programmi\borland\cbuilder6\projects;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=$(BCB)\bin;$(BCB)\projects;$(BCB)\lib\obj;$(BCB)\lib
+Item1=D:\Clienti\TecnoFerrari\AllGlass\a;c:\programmi\borland\cbuilder6\bin;c:\programmi\borland\cbuilder6\projects;$(BCB)\lib\obj;$(BCB)\lib
+Item2=c:\programmi\borland\cbuilder6\bin;c:\programmi\borland\cbuilder6\projects;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_RTLDLL;USEPACKAGES
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[CORBA]
+AddServerUnit=1
+AddClientUnit=1
+PrecompiledHeaders=1
+  </IDEOPTIONS>
+</PROJECT>

@@ -11,7 +11,7 @@ File_8=SourceModule,'Z:\D\Dati\Clienti\TecnoFerrari\Box2006\PanariaFE\GRAPHVAR.D
 
 [Modules]
 Module0=D:\_Tecno\10638_TestInterno_Smoov\PC\Variabil.h
-Module1=D:\_Tecno\10638_TestInterno_Smoov\PC\Smoov.bpr
+Module1=D:\_Tecno\10638_TestInterno_Smoov\10638_TestInterno_Smoov\Listagen.cpp
 Count=2
 EditWindowCount=1
 
@@ -20,18 +20,22 @@ ModuleType=SourceModule
 FormState=0
 FormOnTop=0
 
-[D:\_Tecno\10638_TestInterno_Smoov\PC\Smoov.bpr]
+[D:\_Tecno\10638_TestInterno_Smoov\10638_TestInterno_Smoov\Listagen.cpp]
 ModuleType=SourceModule
-FormState=0
+FormState=1
 FormOnTop=0
 
 [C:\Program Files (x86)\Borland\CBuilder6\Projects\ProjectGroup1.bpg]
 FormState=0
 FormOnTop=0
 
+[D:\_Tecno\10638_TestInterno_Smoov\10638_TestInterno_Smoov\Smoov.bpr]
+FormState=0
+FormOnTop=0
+
 [EditWindow0]
 ViewCount=2
-CurrentView=1
+CurrentView=0
 View0=0
 View1=1
 CodeExplorer=CodeExplorer@EditWindow0
@@ -55,17 +59,17 @@ BottomPanelClients=DockSite1
 BottomPanelData=0000040000000000F90400000000000002960000000000000001000000009A0000000000000001000000009A0000000000000001000000009A0000000000000001000000009A0000000000000001000000009A0000000000000001000000009A000000000000000100000000F904000009000000446F636B5369746531FFFFFFFF
 
 [View0]
-Module=D:\_Tecno\10638_TestInterno_Smoov\PC\Smoov.cpp
+Module=D:\_Tecno\10638_TestInterno_Smoov\PC\Variabil.h
 CursorX=1
-CursorY=1
-TopLine=1
+CursorY=655
+TopLine=641
 LeftCol=1
 
 [View1]
-Module=D:\_Tecno\10638_TestInterno_Smoov\PC\Variabil.h
-CursorX=14
-CursorY=717
-TopLine=710
+Module=D:\_Tecno\10638_TestInterno_Smoov\10638_TestInterno_Smoov\Listagen.cpp
+CursorX=102
+CursorY=8
+TopLine=1
 LeftCol=1
 
 [Watches]
@@ -255,7 +259,7 @@ LRDockWidth=445
 Dockable=1
 SplitPos=133
 ArrangeBy=Name
-SelectedItem=
+SelectedItem=Caption
 ExpandedItems=
 HiddenCategories=
 
@@ -422,7 +426,7 @@ ClassViewDisplayMode=0
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=0
 Top=0
@@ -476,6 +480,6 @@ TBDockHeight=150
 LRDockWidth=283
 Dockable=1
 TabPosition=0
-ActiveTab=Watch List
+ActiveTab=Messages
 TabDockClients=WatchWindow,MessageView@EditWindow0
 
