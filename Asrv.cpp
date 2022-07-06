@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <dir.h>
 
 #include "Tecnofer.h"
 #include "TcAdsDEF.h"
@@ -102,6 +103,21 @@ int agv::ASRV_load_plc_stato(WORD *dm, char *all_mess)
      sprintf(all_mess, "(Stato_ASRV%02d) Error in IP string format PLC BECKHOFF", agv_num);
      return 1;
   }
+
+  //###
+  //---------------------------
+  // Verifica Ping con PLC ASRV
+  //---------------------------
+  int   MsecRisp;
+  int   err_ping=0;
+  err_ping = AlgoPing( OmrPlc[ agv_num ].RemoteHost.c_str(), 500, &MsecRisp, all_mess );
+  if(err_ping){
+     sprintf(all_mess, "(Stato_ASRV%02d) PLC BECKHOFF non raggiungibile", agv_num );
+     errore_comunicazione[COM1][agv_num]=1;
+     return err_ping;
+  }
+  //###
+
   //--------------------------------------------------------
   // Parametrizzazione comunicazione Beckoff
   //--------------------------------------------------------
@@ -394,6 +410,21 @@ int agv::ASRV_trs_mission(char *all_mess)
      sprintf(all_mess, "(Mission_ASRV%02d) Error in IP string format PLC BECKHOFF", agv_num);
      return 1;
   }
+
+  //###
+  //---------------------------
+  // Verifica Ping con PLC ASRV
+  //---------------------------
+  int   MsecRisp;
+  int   err_ping=0;
+  err_ping = AlgoPing( OmrPlc[ agv_num ].RemoteHost.c_str(), 500, &MsecRisp, all_mess );
+  if(err_ping){
+     sprintf(all_mess, "(Mission_ASRV%02d) PLC BECKHOFF non raggiungibile", agv_num );
+     errore_comunicazione[COM1][agv_num]=1;
+     return err_ping;
+  }
+  //###
+
   //--------------------------------------------------------
   // Parametrizzazione comunicazione Beckoff
   //--------------------------------------------------------
@@ -620,6 +651,21 @@ int agv::ASRV_trs_command(char *all_mess)
      sprintf(all_mess, "(Command_ASRV%02d) Error in IP string format PLC BECKHOFF", agv_num);
      return 1;
   }
+
+  //###
+  //---------------------------
+  // Verifica Ping con PLC ASRV
+  //---------------------------
+  int   MsecRisp;
+  int   err_ping=0;
+  err_ping = AlgoPing( OmrPlc[ agv_num ].RemoteHost.c_str(), 500, &MsecRisp, all_mess );
+  if(err_ping){
+     sprintf(all_mess, "(Command_ASRV%02d) PLC BECKHOFF non raggiungibile", agv_num );
+     errore_comunicazione[COM1][agv_num]=1;
+     return err_ping;
+  }
+  //###
+
   //---------------------------------------------
   // Parametrizzazione comunicazione Beckoff
   //---------------------------------------------

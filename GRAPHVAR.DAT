@@ -2,8 +2,8 @@
 //  Sfasamento Visualizzazione coordinate layout 
 // ----------------------------------------------
 
-#define    OFFSO1  10274
-#define    OFFSV1  -3096
+#define    OFFSO1  10628
+#define    OFFSV1  -3136
 
 int   OffSV1 = OFFSV1;
 int   OffSO1 = OFFSO1;
