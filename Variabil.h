@@ -445,7 +445,7 @@
 
 #define  INGOMBRO_BOX_A_BORDO             0  // Ingombro del box a bordo del TGV
 
-#define  DIST_MIN_RETTE_PARALLELE       120  // Distanza minima per tracce parallele
+#define  DIST_MIN_RETTE_PARALLELE        90  // Distanza minima per tracce parallele
 
 #define  DIST_MIN_ROT_SINGOLA           120  // Distanza minima perch‚ 1 tgv possa
                                              // ruotare mentre l'altro si muove
@@ -538,7 +538,7 @@
 #define  PASS_TECNO            "ICAMTF"  // Password di accesso a Livello 2
 #define  PASS_LEVEL3                 ""  // Password di accesso a Livello 3
                                          // (Se è "" viene calcolato gg+mm+aaaa)
-#define  VERSIONE_IMPIANTO            8  // Versione di aggiornamento dell'Impianto
+#define  VERSIONE_IMPIANTO           10  // Versione di aggiornamento dell'Impianto
 #define  COMM_ALGOSISTEMI         10638  // COMMESSA ALGO (fisso)
 
 #define  PLANT_PLUGIN         "ICAM.CPP" // Nome impianto.CPP

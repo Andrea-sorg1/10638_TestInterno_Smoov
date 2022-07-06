@@ -117,7 +117,6 @@ void __fastcall TFormMain::FormResize(TObject *Sender)
   // Gestione posizionamento Form di gestione impianto
   //---------------------------------------------------
   if(!FormInClose){
-     FormLayout->Left   = 1;
      FormLayout->Left   = 0;
      FormLayout->Top    = 0;
      FormLayout->Height = FormMain->ClientHeight-83;
@@ -1987,6 +1986,12 @@ void TFormMain::ReadIniProject()
   AggiornaLogSQL         = (bool)  IniFile->ReadBool("DBASE", "AggiornaLogSQL",             true);
                                                                                                      // 0 - nessuno
   //----------------------------------------------------------
+  // GESTIONE_ASRV
+  //----------------------------------------------------------
+  ASRV_AbilitaPassaggioSottoAccumoli = (bool)  IniFile->ReadBool("ASRV", "AbilitaPassaggioSottoAccumoli", true);
+  ASRV_MinNodiLiberiPercorsoInverso  = (short) IniFile->ReadInteger("ASRV", "MinNodiLiberiPercorsoInverso", 99);
+
+  //----------------------------------------------------------
   // ESCLUSIONE COMUNICAZIONE SQL
   // se non abilitata gestione UDC
   //----------------------------------------------------------
@@ -2015,6 +2020,15 @@ void TFormMain::ReadIniProject()
   // - Pint su rotazione.
   //----------------------------------------------------------
   #ifdef GESTIONE_CURVE
+     AbilitaPuntoIntermedioSuRotaz=false;
+  #endif;
+
+  //----------------------------------------------------------
+  // GESTIONE ASRV
+  // Incompatibile con:
+  // - Pint su rotazione.
+  //----------------------------------------------------------
+  #ifdef GESTIONE_ASRV
      AbilitaPuntoIntermedioSuRotaz=false;
   #endif;
 
@@ -2341,6 +2355,13 @@ void TFormMain::WriteIniProject()
   IniFile->WriteInteger("DBASE", "SecReloadOnThreadSQL",   SecReloadOnThreadSQL);
   IniFile->WriteBool("DBASE", "NoLockQuery",               NoLockQuery);
   IniFile->WriteBool("DBASE", "AggiornaLogSQL",            AggiornaLogSQL);
+
+
+  //----------------------------------------------------------
+  // GESTIONE_ASRV
+  //----------------------------------------------------------
+  IniFile->WriteBool("ASRV", "AbilitaPassaggioSottoAccumoli",   ASRV_AbilitaPassaggioSottoAccumoli);
+  IniFile->WriteInteger("ASRV", "MinNodiLiberiPercorsoInverso", ASRV_MinNodiLiberiPercorsoInverso);
 
   delete IniFile;
 }
