@@ -3024,6 +3024,7 @@ int process::RunAutomatico(char *all_mess)
   //----------------------------------------------
   if(FormLayout->TestPercorsiTecnoFerrari) return 0;
 
+
   //----------------------------------------------
   // Lettura da PLCs Allen Bradley
   //----------------------------------------------
@@ -3390,14 +3391,15 @@ int process::RunAutomatico(char *all_mess)
         // l'azzeramento è andato a buon fine.
         //----------------------------------------------------------
         if(ResetMissione==true && !break_Com[COM1]){
-           err = AGV[NumAgv]->load_stato(all_mess);
+           memset(&dm[0], 0, sizeof(dm));
+           err = OM.ld_canale(&dm[0], (WORD)(NumAgv), "RD", 91, 2, all_mess);
            //-------------------------------------------------
            // Se la missione non è stata azzerata --> Skip!
            // 1 - errore di comunicazione
            // 2 - DM91!=0
            // 3 - OK PROGRAMMA==0 (bit5 DM92)
            //-------------------------------------------------
-           if(err!=0 || AGV[NumAgv]->stato.start!=0 || AGV[NumAgv]->stato.s.bit.okprog==false) ResetMissione=false;
+           if(err!=0 || dm[0]!=0 || !(TestBit((char *) &dm[1], 5))) ResetMissione=false;
         }
         //----------------------------------------------------------
         // Se sono verificate tutte le condizione necessarie per
@@ -4239,14 +4241,21 @@ int process::init_mission(bool deadlock, short int forza_tipo_path, short int nu
      AGV[num_agv]->allarme_interno = ALL_INT_STOP_TGV;
      return 0;
   }
-
   //-------------------------------------------------------------------
-  // GESTIONE_ASRV (ottimizzazioni di percorso)
+  // GESTIONE_ASRV (attraversamento corsie)
   //-------------------------------------------------------------------
   #ifdef GESTIONE_ASRV
-     AGV[num_agv]->ASRV_select_path(dest, &perc[0], &dati[0]);
+     memset(&new_perc[0],  0, sizeof(new_perc));
+     memset(&new_dati[0],  0, sizeof(new_dati));
+     AGV[num_agv]->ASRV_attraversa_corsie(&perc[0], &dati[0], &new_perc[0], &new_dati[0]);
+     //-------------------------------------------------------------------
+     // Modifico il percorso
+     //-------------------------------------------------------------------
+     if(memcmp(&new_perc[0], &app_perc[0], sizeof(app_perc))!=0){
+        memcpy(&perc, &new_perc, sizeof(perc));
+        memcpy(&dati, &new_dati, sizeof(dati));
+     }
   #endif;
-
   //-------------------------------------------------------------------
   // VERIFICA PRESENZA CURVE
   // Verifica presenza di curve lungo il percorso
@@ -5048,14 +5057,15 @@ int process::InizializzaMissioneFuoriIngombro(short int num_agv, bool *Ok, char 
      // l'azzeramento è andato a buon fine.
      //----------------------------------------------------------
      if(ResetMissione==true && !break_Com[COM1]){
-        err = AGV[num_agv]->load_stato(all_mess);
+        memset(&dm[0], 0, sizeof(dm));
+        err = OM.ld_canale(&dm[0], (WORD)(num_agv), "RD", 91, 2, all_mess);
         //-------------------------------------------------
         // Se la missione non è stata azzerata --> Skip!
         // 1 - errore di comunicazione
         // 2 - DM91!=0
         // 3 - OK PROGRAMMA==0 (bit5 DM92)
         //-------------------------------------------------
-        if(err!=0 || AGV[num_agv]->stato.start!=0 || AGV[num_agv]->stato.s.bit.okprog==false) ResetMissione=false;
+        if(err!=0 || dm[0]!=0 || !(TestBit((char *) &dm[1], 5))) ResetMissione=false;
      }
      //----------------------------------------------------------
      // Se ho le Condizioni per azzerare la missione

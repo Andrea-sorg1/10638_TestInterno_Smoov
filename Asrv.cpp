@@ -30,13 +30,6 @@
 #include "TcAdsAPI.h"
 
 // -----------------------------
-//     STRUTTURE GRAFICHE
-//      da GRAPHVAR.CPP
-// -----------------------------
-extern int Punti[][5];
-extern int Percorso[][2];
-
-// -----------------------------
 //   ASRV_load_file_stato()
 // -----------------------------
 // load Stato da file
@@ -635,7 +628,6 @@ int agv::ASRV_trs_command(char *all_mess)
   // Reset comando di start con missione in corso
   //---------------------------------------------
   if(asrv_stato.start>0  && asrv_comandi.start>0 ) asrv_comandi.start=0;
-  if(asrv_comandi.end>0                          ) asrv_comandi.start=0;
   //---------------------------------------------
   // Reset new_pos se aggiornato o missione on
   //---------------------------------------------
@@ -644,7 +636,10 @@ int agv::ASRV_trs_command(char *all_mess)
   //---------------------------------------------
   // Reset END mission se missione già azzerata
   //---------------------------------------------
-  if(asrv_stato.start==0  && asrv_comandi.end>0  ){asrv_comandi.end=0; asrv_comandi.pintend=0;}
+//if(asrv_stato.start==0  && asrv_comandi.end>0  ){asrv_comandi.end=0; asrv_comandi.pintend=0;}
+  if(asrv_stato.start==0 && asrv_comandi.start==0 && asrv_comandi.end>0){
+     asrv_comandi.end=0; asrv_comandi.pintend=0;
+  }
   //---------------------------------------------
   // WATCH-DOG (incrementa valore letto in stato)
   //---------------------------------------------
@@ -909,174 +904,25 @@ int agv::ASRV_save_file_mission(char *all_mess)
 
   return err;
 }
-//===========================================================================
-//
-//                     GESTIONE OTTIMIZZAZIONE TRAGITTI ASRV
-//
-//===========================================================================
-// -----------------------------------
-//   ASRV_ottimizza_path()
-// -----------------------------------
-// Gestione attraversamento corsie ASRV
-//
-void agv::ASRV_select_path(short int dest, short int *perc_asrv, struct DATI_PERCORSO *dati_asrv)
-{
-  int  i, err=0;
-  char buffer[101]="";
-  bool ok_path_inverso;
-  short int count1, count2;
-  short int n_dist, n_rot;
-  short int min_to_start1;
-  short int min_to_start2;
-  short int n_interr_perc1;
-  short int n_interr_perc2;
-  short int min_nodi_perc1;
-  short int min_nodi_perc2;
-  short int agv_bloccante_path1;
-  short int agv_bloccante_path2;
-  short int perc1[MAXPERCORSI];
-  struct DATI_PERCORSO dati1[MAXPERCORSI];
-  short int perc2[MAXPERCORSI];
-  struct DATI_PERCORSO dati2[MAXPERCORSI];
-
-  //--------------------------------------------------------
-  // reset strutture locali
-  //--------------------------------------------------------
-  // PERCORSO DIRETTO
-  memset(&perc1[0], 0, sizeof(perc1));
-  memset(&dati1[0], 0, sizeof(dati1));
-  //--------------------------------------------------------
-  // PERCORSO DIRETTO ORIGINALE
-  //--------------------------------------------------------
-  memcpy(&perc1[0], perc_asrv, sizeof(perc1));
-  memcpy(&dati1[0], dati_asrv, sizeof(dati1));
-  //--------------------------------------------------------
-  // PERCORSO DIRETTO RIELABORATO PER ATTRAVERAMENTO CORSIE
-  //--------------------------------------------------------
-  ASRV_attraversa_corsie(&perc1[0], &dati1[0]);
-  //--------------------------------------------------------
-  // Verifico se percorso standard è disponibile
-  //--------------------------------------------------------
-  agv_bloccante_path1=min_nodi_perc1=min_to_start1=n_interr_perc1=0;
-  test_percorso_disponibile(&perc1[0], &dati1[0], &agv_bloccante_path1, &min_nodi_perc1, &min_to_start1, &n_interr_perc1, buffer);
-  //--------------------------------------------------------
-  // PERCORSO INVERSO
-  //--------------------------------------------------------
-  n_dist=n_rot=0;
-  ok_path_inverso=true;
-  memset(&perc2[0], 0, sizeof(perc2));
-  memset(&dati2[0], 0, sizeof(dati2));
-  err = distanza(STD_PATH, dest, stato.pos, &perc2[0], &dati2[0], buffer, &n_dist, &n_rot);
-  if(err!=0 || n_dist>MAXPERCORSI) ok_path_inverso=false;
-  //--------------------------------------------------------
-  // Se il percorso inverso è valido, verifico se supera
-  // i metri massimi ammessi
-  //--------------------------------------------------------
-  if(ok_path_inverso==true){
-     //--------------------------------------------------------
-     // PERCORSO DIRETTO RIELABORATO PER ATTRAVERAMENTO CORSIE
-     //--------------------------------------------------------
-     ASRV_attraversa_corsie(&perc2[0], &dati2[0]);
-     //--------------------------------------------------------
-     // Verifico se percorso standard è disponibile
-     //--------------------------------------------------------
-     agv_bloccante_path2=min_nodi_perc2=min_to_start2=n_interr_perc2=0;
-     test_percorso_disponibile(&perc2[0], &dati2[0], &agv_bloccante_path2, &min_nodi_perc2, &min_to_start2, &n_interr_perc2, buffer);
-     if(min_nodi_perc2>ASRV_MinNodiLiberiPercorsoInverso) ok_path_inverso=false;
-  }
-  //--------------------------------------------------------
-  // Se il percorso inverso ha un numero di nodi occupabili
-  // sufficente per essere scelto, faccio un conteggio
-  // dei cambi di corsia.
-  // NOTA: più cambi di corsia ci sono più lente deve fare
-  //       la navetta
-  //--------------------------------------------------------
-  if(ok_path_inverso==true){
-     //--------------------------------------------------------------
-     // PERCORSO STANDARD (conteggio cambi di corsia)
-     //--------------------------------------------------------------
-     count1=0;
-     for(i=0; i<MAXPERCORSI; i++){
-        if(perc1[i+1]==0) break;
-        //-------------------------
-        // PERCORSO STANDARD
-        // Conteggi cambi corsia
-        //-------------------------
-        if(N.n[perc1[i]]->corsia==N.n[perc1[i+1]]->corsia) continue;
-        count1++;
-     }
-     //--------------------------------------------------------------
-     // PERCORSO INVERSO (conteggio cambi di corsia)
-     //--------------------------------------------------------------
-     count2=0;
-     for(i=0; i<MAXPERCORSI; i++){
-        if(perc2[i+1]==0) break;
-        if(N.n[perc2[i]]->corsia==N.n[perc2[i+1]]->corsia) continue;
-        count2++;
-     }
-     //--------------------------------------------------------------
-     // se il percorso inverso ha troppo cambi di corsi --> skip!!
-     //--------------------------------------------------------------
-     if(count2>count1) ok_path_inverso=false;
-     //--------------------------------------------------------------
-     // se l'inverso e lo standard hanno lo stesso numero di cambi
-     // corsia, scelgo quello più traggitto disponibile
-     //--------------------------------------------------------------
-     if(count2==count1 && min_nodi_perc2<=min_nodi_perc1) ok_path_inverso=false;
-  }
-  //--------------------------------------------------------
-  // RITORNO IL PERCORSO IL PERCORSO FINALE SCELTO
-  //--------------------------------------------------------
-  // 1. scelto PERCORSO DIRETTO
-  if(ok_path_inverso==false){
-     memcpy(perc_asrv, &perc1[0], sizeof(perc1));
-     memcpy(dati_asrv, &dati1[0], sizeof(dati1));
-  }
-  // 2. scelto PERCORSO INVERSO
-  else{
-     memcpy(perc_asrv, &perc2[0], sizeof(perc2));
-     memcpy(dati_asrv, &dati2[0], sizeof(dati2));
-  }
-}
 
 // -----------------------------------
 //   ASRV_attraversa_corsie()
 // -----------------------------------
 // Gestione attraversamento corsie ASRV
 //
-void agv::ASRV_attraversa_corsie(short int *perc, struct DATI_PERCORSO *dati)
+void agv::ASRV_attraversa_corsie(short int perc[], struct DATI_PERCORSO dati[], short int *new_perc, struct DATI_PERCORSO *new_dati)
 {
   int err;
   char buffer[101]="";
-  bool path_taglio_trovato;
-  bool ok_ordine;
-  bool in_X, in_Y;
-  int xm, ym;
-  int xd, yd;
-  int x1, y1;
-  int x2, y2;
-  int xn1, yn1;
-  int xn2, yn2;
-  short int id_taglio;
-  short int altro_agv;
   short int i, j, k, id;
-  short int n0, n1, n2;
-  short int end_taglio;
+  short int id_attraversa;
   short int p1, p2, n_mag;
-  short int n_dist, n_rot;
   short int num_mag, num_pos;
-  short int rot_taglio, dir_taglio;
-  short int ral_taglio, dist_taglio;
-  short int n_taglio[MAXPERCORSI];
-  struct DATI_PERCORSO d_taglio[MAXPERCORSI];
-  short int new_perc[MAXPERCORSI];
-  struct DATI_PERCORSO new_dati[MAXPERCORSI];
+  short int n_dist, n_rot;
+  short int mag_perc[MAXPERCORSI];
+  struct DATI_PERCORSO mag_dati[MAXPERCORSI];
+  struct DATI_PERCORSO dati_out;
 
-  //--------------------------------------------------
-  // Reset struttura percorso rielaborato
-  //--------------------------------------------------
-  memset(&new_perc[0], 0, sizeof(new_perc));
-  memset(&new_dati[0], 0, sizeof(new_dati));
   //--------------------------------------------------
   // Scorro tutta la missione del TGV per individuare
   // eventuali passaggi sotto magazzini FIFO
@@ -1096,33 +942,16 @@ void agv::ASRV_attraversa_corsie(short int *perc, struct DATI_PERCORSO *dati)
      // Verifico se il nodo considerato appartiene a un
      // magazzino
      //--------------------------------------------------
-     p1  = perc[i];
-     p2  = 0;
-     end_taglio = i;
-     dir_taglio = 99;
-     rot_taglio = 99;
-     ral_taglio = 99;
-     dist_taglio= 0;
+     p1 = perc[i];
      //--------------------------------------------------
      // Verifico se nodo appartiene a corridoio di
      // servizio
      //--------------------------------------------------
      if(N.n[p1]->corsia!=ASRV_NODO_SERVIZIO){id++; continue;}
      //--------------------------------------------------
-     // 0. Attraversamento corsie disattivato
-     //--------------------------------------------------
-     if(ASRV_AbilitaPassaggioSottoAccumoli==false){id++; continue;}
-     //--------------------------------------------------
-     // Memorizzo coordinate punto attraveramento
-     //--------------------------------------------------
-     x1 = Punti[p1][0];
-     y1 = (Punti[p1][1]*(-1));
-     //--------------------------------------------------
-     // 1. VERIFICO CONDIZIONE ATTRAVERAMENTO CORRIDOIO
      // Verifico tutti i punti successivi associati
      // al magazzino considerato
      //--------------------------------------------------
-     path_taglio_trovato=false;
      for(j=0; j<=MAXPUNTINODO-1; j++){
         if(N.n[p1]->rec[j].ps==0                ) break;
         if(!N.punti_notevoli[N.n[p1]->rec[j].ps]) continue;
@@ -1135,8 +964,7 @@ void agv::ASRV_attraversa_corsie(short int *perc, struct DATI_PERCORSO *dati)
         //--------------------------------------------------
         // Verifico se appartiene a magazzino FIFO
         //--------------------------------------------------
-        in_X=in_Y=false;
-        num_mag=num_pos=0;
+        num_mag = num_pos=0;
         if(M.test_punto_presente_mag(buffer, n_mag, &num_mag, &num_pos)) continue;
         //--------------------------------------------------
         // Magazzino non valido
@@ -1156,18 +984,6 @@ void agv::ASRV_attraversa_corsie(short int *perc, struct DATI_PERCORSO *dati)
         //--------------------------------------------------
         if(asrv_stato.sbit1.carico && M.m[num_mag]->NumCestoni!=0) continue;
         //--------------------------------------------------
-        // Verifico che nodo del magazzino non sia
-        // occupato o riservato
-        //--------------------------------------------------
-        altro_agv=0;
-        if(P.test_dest_riservata(n_mag, &altro_agv, agv_num) && altro_agv!=0 && altro_agv!=agv_num) continue;
-        if(P.test_dest_occupata(n_mag, &altro_agv) && altro_agv!=0 && altro_agv!=agv_num) continue;
-        //--------------------------------------------------
-        // Memorizzo le coordinate della corsia considerata
-        //--------------------------------------------------
-        xm = Punti[n_mag][0];
-        ym = (Punti[n_mag][1]*(-1));
-        //--------------------------------------------------
         // Controllo verso di percorrenza
         //--------------------------------------------------
         // 1. ingresso nel verso del magazzino
@@ -1178,577 +994,49 @@ void agv::ASRV_attraversa_corsie(short int *perc, struct DATI_PERCORSO *dati)
            //--------------------------------------------------
            if(N.n[M.m[num_mag]->PuntoOut]->rec[0].ps<1       ) continue;
            if(N.n[M.m[num_mag]->PuntoOut]->rec[0].ps>TOTPUNTI) continue;
-           //--------------------------------------------------
-           // Recupero la rotazione di attraveramento
-           //--------------------------------------------------
-           rot_taglio=N.n[M.m[num_mag]->PuntoOut]->rec[0].rot;
-           dir_taglio=N.n[M.m[num_mag]->PuntoOut]->rec[0].ind;
-           switch(rot_taglio){
-              case   0:
-              case 180:in_Y=true;
-                       break;
-              case  90:
-              case 270:in_X=true;
-                       break;
-           }
-        }
-        // 2. ingresso dal lato di uscita del magazzino
-        if(n_mag==M.m[num_mag]->PuntoOut){
-           //--------------------------------------------------
-           // Memorizzo verso di ingresso invertito in maga
-           //--------------------------------------------------
-           rot_taglio=N.n[p1]->rec[j].rot;
-           dir_taglio=N.n[p1]->rec[j].ind;
-           switch(rot_taglio){
-              case   0:
-              case 180:in_Y=true;
-                       break;
-              case  90:
-              case 270:in_X=true;
-                       break;
-           }
-        }
-        //--------------------------------------------------
-        // Verifico esistenza nodo di percorso su
-        // coordinata di attraversamento.
-        //--------------------------------------------------
-        for(k=i+1; k<MAXPERCORSI-1; k++){
-           if(in_Y==false && in_X==false     ) break;
-           if(perc[k]==0                     ) break;
-           //--------------------------------------------------
-           // Interrompo su cambio piano
-           //--------------------------------------------------
-           if(N.n[p1]->piano!=N.n[perc[k]]->piano) break;
-           //--------------------------------------------------
-           // Scarto punti notevoli
-           //--------------------------------------------------
-           if(N.punti_notevoli[perc[k]]==true) continue;
-           //--------------------------------------------------
-           // Recupero coordinate punti percorso
-           //--------------------------------------------------
-           x2 = Punti[perc[k]][0];
-           y2 = (Punti[perc[k]][1]*(-1));
-           //--------------------------------------------------
-           // Y- (nodo mag deve essere compreso tra p1 e p2)
-           //--------------------------------------------------
-           if(in_Y==true && y2<ym && ym>y1) continue;
-           //--------------------------------------------------
-           // Y+ (nodo mag deve essere compreso tra p1 e p2)
-           //--------------------------------------------------
-           if(in_Y==true && y2>y1 && ym<y1) continue;
-           //--------------------------------------------------
-           // X- (nodo mag deve essere compreso tra p1 e p2)
-           //--------------------------------------------------
-           if(in_X==true && x2<x1 && xm>x1) continue;
-           //--------------------------------------------------
-           // X+ (nodo mag deve essere compreso tra p1 e p2)
-           //--------------------------------------------------
-           if(in_X==true && x2>x1 && xm>x1) continue;
-           //--------------------------------------------------
-           // Verifico se punto in ortogonale a corsia di
-           // attraversamento
-           //--------------------------------------------------
-           if(in_X==true && abs(ym-y2)>5) continue;
-           if(in_Y==true && abs(xm-x2)>5) continue;
-           //--------------------------------------------------
-           // trovato altro punto su percorso attraveramento
-           //--------------------------------------------------
-           p2 = perc[k];
-           end_taglio=k-1;
-           break;
-        }
-        if(p2!=0) break;
-     }
-     //--------------------------------------------------
-     // 2. DETERMINO PERCORSO DI TAGLIO
-     // Trovati i punti di attraversamento analizzo
-     // struttrua percorsi e determino il percorso di
-     // taglio con nodi sulla stessa coordinata in base
-     // a verso di percorrenza del magazzino
-     //--------------------------------------------------
-     if(p1!=0 && p2!=0){
-        x2 = Punti[p2][0];
-        y2 = (Punti[p2][1]*(-1));
-        switch(rot_taglio){
-           case   0:
-           case 180: in_Y=true;
-                     break;
-           case  90:
-           case 270: in_X=true;
-                     break;
-        }
-        //--------------------------------------------
-        // compilo elenco nodi percorso di taglio
-        // in sequenza di percorrenza
-        //--------------------------------------------
-        memset(&n_taglio[0], 0, sizeof(n_taglio));
-        memset(&d_taglio[0], 0, sizeof(d_taglio));
-        //--------------------------------------------
-        // Y-
-        //--------------------------------------------
-        if(in_Y==true && y2<y1){
-           k=0;
-           for(j=1; j<=MAXPUNTI; j++){
-              if(k>=MAXPERCORSI) break;
-              if(Punti[j][2]==0) break;
-              //-----------------------------------------
-              // Solo nodi esistenti
-              //-----------------------------------------
-              if(N.n[j]->num<1        ) continue;
-              if(N.n[j]->num>TOTPUNTI ) continue;
-              //--------------------------------------------------
-              // Scarto nodi su altri piani
-              //--------------------------------------------------
-              if(N.n[p1]->piano!=N.n[N.n[j]->num]->piano) continue;
-              //-----------------------------------------
-              // Se nodo di magazzino verifico se
-              // percorribile
-              //-----------------------------------------
-              n1=N.n[j]->num;
-              if(N.punti_notevoli[n1]==true){
-                 num_mag=num_pos=0;
-                 if(M.test_punto_presente_mag(buffer, n1, &num_mag, &num_pos)) continue;
-                 //--------------------------------------------------
-                 // Magazzino non valido
-                 //--------------------------------------------------
-                 if(num_mag<1                      ) continue;
-                 if(num_mag>TOTMAG                 ) continue;
-                 if(M.m[num_mag]->Num<1            ) continue;
-                 if(M.m[num_mag]->Num>TOTMAG       ) continue;
-                 if(M.m[num_mag]->Fifo==false      ) continue;
-                 if(M.m[num_mag]->Tipo==MG_ESCLUSO ) continue;
-                 if(M.m[num_mag]->PuntoIng<1       ) continue;
-                 if(M.m[num_mag]->PuntoIng>TOTPUNTI) continue;
-                 if(M.m[num_mag]->PuntoOut<1       ) continue;
-                 if(M.m[num_mag]->PuntoOut>TOTPUNTI) continue;
-                 //--------------------------------------------------
-                 // Controllo stato magazzino (se ASRV carico)
-                 //--------------------------------------------------
-                 if(asrv_stato.sbit1.carico && M.m[num_mag]->NumCestoni!=0) continue;
-                 //--------------------------------------------------
-                 // Verifico che nodo del magazzino non sia
-                 // occupato o riservato
-                 //--------------------------------------------------
-                 altro_agv=0;
-                 if(P.test_dest_riservata(n1, &altro_agv, agv_num) && altro_agv!=0 && altro_agv!=agv_num) continue;
-                 if(P.test_dest_occupata(n1, &altro_agv) && altro_agv!=0 && altro_agv!=agv_num) continue;
-              }
-              //-----------------------------------------
-              // recupero coordinate
-              //-----------------------------------------
-              xn1 = Punti[n1][0];
-              yn1 = (Punti[n1][1]*(-1));
-              //-----------------------------------------
-              // Scarto punti non allineati
-              //-----------------------------------------
-              if(abs(x1-xn1)>5) continue;
-              //-----------------------------------------
-              // Scarto punti fuori range di coordinate
-              //-----------------------------------------
-              if(yn1<y2 || yn1>y1) continue;
-              path_taglio_trovato=true;
-              n_taglio[k]=n1;
-              k++;
-           }
-           //-----------------------------------------
-           // Ordinamento in base al verso
-           //-----------------------------------------
-           do{
-              ok_ordine=true;
-              for(j=1; j<MAXPERCORSI; j++){
-                 if(n_taglio[j]==0) break;
-                 n1  = n_taglio[j-1];
-                 xn1 = Punti[n1][0];
-                 yn1 = (Punti[n1][1]*(-1));
-                 n2  = n_taglio[j];
-                 xn2 = Punti[n2][0];
-                 yn2 = (Punti[n2][1]*(-1));
-                 if(yn2<yn1) continue; // ordine giusto
-                 //---------------------------
-                 // Inversione ordine nodi
-                 //---------------------------
-                 n0 = n_taglio[j-1];
-                 n_taglio[j-1] = n_taglio[j];
-                 n_taglio[j  ] = n0;
-                 ok_ordine=false;
-                 break;
-              }
-           }while(!ok_ordine);
-        }
-        //--------------------------------------------
-        // Y+
-        //--------------------------------------------
-        if(in_Y==true && y2>y1){
-           k=0;
-           for(j=1; j<=MAXPUNTI; j++){
-              if(k>=MAXPERCORSI) break;
-              if(Punti[j][2]==0) break;
-              //-----------------------------------------
-              // Solo nodi esistenti
-              //-----------------------------------------
-              if(N.n[j]->num<1        ) continue;
-              if(N.n[j]->num>TOTPUNTI ) continue;
-              //--------------------------------------------------
-              // Scarto nodi su altri piani
-              //--------------------------------------------------
-              if(N.n[p1]->piano!=N.n[N.n[j]->num]->piano) continue;
-              //-----------------------------------------
-              // Se nodo di magazzino verifico se
-              // percorribile
-              //-----------------------------------------
-              n1=N.n[j]->num;
-              if(N.punti_notevoli[n1]==true){
-                 num_mag=num_pos=0;
-                 if(M.test_punto_presente_mag(buffer, n1, &num_mag, &num_pos)) continue;
-                 //--------------------------------------------------
-                 // Magazzino non valido
-                 //--------------------------------------------------
-                 if(num_mag<1                      ) continue;
-                 if(num_mag>TOTMAG                 ) continue;
-                 if(M.m[num_mag]->Num<1            ) continue;
-                 if(M.m[num_mag]->Num>TOTMAG       ) continue;
-                 if(M.m[num_mag]->Fifo==false      ) continue;
-                 if(M.m[num_mag]->Tipo==MG_ESCLUSO ) continue;
-                 if(M.m[num_mag]->PuntoIng<1       ) continue;
-                 if(M.m[num_mag]->PuntoIng>TOTPUNTI) continue;
-                 if(M.m[num_mag]->PuntoOut<1       ) continue;
-                 if(M.m[num_mag]->PuntoOut>TOTPUNTI) continue;
-                 //--------------------------------------------------
-                 // Controllo stato magazzino (se ASRV carico)
-                 //--------------------------------------------------
-                 if(asrv_stato.sbit1.carico && M.m[num_mag]->NumCestoni!=0) continue;
-                 //--------------------------------------------------
-                 // Verifico che nodo del magazzino non sia
-                 // occupato o riservato
-                 //--------------------------------------------------
-                 altro_agv=0;
-                 if(P.test_dest_riservata(n1, &altro_agv, agv_num) && altro_agv!=0 && altro_agv!=agv_num) continue;
-                 if(P.test_dest_occupata(n1, &altro_agv) && altro_agv!=0 && altro_agv!=agv_num) continue;
-              }
-              //-----------------------------------------
-              // recupero coordinate
-              //-----------------------------------------
-              xn1 = Punti[n1][0];
-              yn1 = (Punti[n1][1]*(-1));
-              //-----------------------------------------
-              // Scarto punti non allineati
-              //-----------------------------------------
-              if(abs(x1-xn1)>5) continue;
-              //-----------------------------------------
-              // Scarto punti fuori range di coordinate
-              //-----------------------------------------
-              if(yn1>y2 || yn1<y1) continue;
-              path_taglio_trovato=true;
-              n_taglio[k]=n1;
-              k++;
-           }
-           //-----------------------------------------
-           // Ordinamento in base al verso
-           //-----------------------------------------
-           do{
-              ok_ordine=true;
-              for(j=1; j<MAXPERCORSI; j++){
-                 if(n_taglio[j]==0) break;
-                 n1  = n_taglio[j-1];
-                 xn1 = Punti[n1][0];
-                 yn1 = (Punti[n1][1]*(-1));
-                 n2  = n_taglio[j];
-                 xn2 = Punti[n2][0];
-                 yn2 = (Punti[n2][1]*(-1));
-                 if(yn2>yn1) continue; // ordine giusto
-                 //---------------------------
-                 // Inversione ordine nodi
-                 //---------------------------
-                 n0 = n_taglio[j-1];
-                 n_taglio[j-1] = n_taglio[j];
-                 n_taglio[j  ] = n0;
-                 ok_ordine=false;
-                 break;
-              }
-           }while(!ok_ordine);
-        }
-        //--------------------------------------------
-        // X-
-        //--------------------------------------------
-        if(in_X==true && x2<x1){
-           k=0;
-           for(j=1; j<=MAXPUNTI; j++){
-              if(k>=MAXPERCORSI) break;
-              if(Punti[j][2]==0) break;
-              //-----------------------------------------
-              // Solo nodi esistenti
-              //-----------------------------------------
-              if(N.n[j]->num<1        ) continue;
-              if(N.n[j]->num>TOTPUNTI ) continue;
-              //--------------------------------------------------
-              // Scarto nodi su altri piani
-              //--------------------------------------------------
-              if(N.n[p1]->piano!=N.n[N.n[j]->num]->piano) continue;
-              //-----------------------------------------
-              // Se nodo di magazzino verifico se
-              // percorribile
-              //-----------------------------------------
-              n1=N.n[j]->num;
-              if(N.punti_notevoli[n1]==true){
-                 num_mag=num_pos=0;
-                 if(M.test_punto_presente_mag(buffer, n1, &num_mag, &num_pos)) continue;
-                 //--------------------------------------------------
-                 // Magazzino non valido
-                 //--------------------------------------------------
-                 if(num_mag<1                      ) continue;
-                 if(num_mag>TOTMAG                 ) continue;
-                 if(M.m[num_mag]->Num<1            ) continue;
-                 if(M.m[num_mag]->Num>TOTMAG       ) continue;
-                 if(M.m[num_mag]->Fifo==false      ) continue;
-                 if(M.m[num_mag]->Tipo==MG_ESCLUSO ) continue;
-                 if(M.m[num_mag]->PuntoIng<1       ) continue;
-                 if(M.m[num_mag]->PuntoIng>TOTPUNTI) continue;
-                 if(M.m[num_mag]->PuntoOut<1       ) continue;
-                 if(M.m[num_mag]->PuntoOut>TOTPUNTI) continue;
-                 //--------------------------------------------------
-                 // Controllo stato magazzino (se ASRV carico)
-                 //--------------------------------------------------
-                 if(asrv_stato.sbit1.carico && M.m[num_mag]->NumCestoni!=0) continue;
-                 //--------------------------------------------------
-                 // Verifico che nodo del magazzino non sia
-                 // occupato o riservato
-                 //--------------------------------------------------
-                 altro_agv=0;
-                 if(P.test_dest_riservata(n1, &altro_agv, agv_num) && altro_agv!=0 && altro_agv!=agv_num) continue;
-                 if(P.test_dest_occupata(n1, &altro_agv) && altro_agv!=0 && altro_agv!=agv_num) continue;
-              }
-              //-----------------------------------------
-              // recupero coordinate
-              //-----------------------------------------
-              xn1 = Punti[n1][0];
-              yn1 = (Punti[n1][1]*(-1));
-              //-----------------------------------------
-              // Scarto punti non allineati
-              //-----------------------------------------
-              if(abs(y1-yn1)>5) continue;
-              //-----------------------------------------
-              // Scarto punti fuori range di coordinate
-              //-----------------------------------------
-              if(xn1<x2 || xn1>x1) continue;
-              path_taglio_trovato=true;
-              n_taglio[k]=n1;
-              k++;
-           }
-           //-----------------------------------------
-           // Ordinamento in base al verso
-           //-----------------------------------------
-           do{
-              ok_ordine=true;
-              for(j=1; j<MAXPERCORSI; j++){
-                 if(n_taglio[j]==0) break;
-                 n1  = n_taglio[j-1];
-                 xn1 = Punti[n1][0];
-                 yn1 = (Punti[n1][1]*(-1));
-                 n2  = n_taglio[j];
-                 xn2 = Punti[n2][0];
-                 yn2 = (Punti[n2][1]*(-1));
-                 if(xn2<xn1) continue; // ordine giusto
-                 //---------------------------
-                 // Inversione ordine nodi
-                 //---------------------------
-                 n0 = n_taglio[j-1];
-                 n_taglio[j-1] = n_taglio[j];
-                 n_taglio[j  ] = n0;
-                 ok_ordine=false;
-                 break;
-              }
-           }while(!ok_ordine);
-        }
-        //--------------------------------------------
-        // X+
-        //--------------------------------------------
-        if(in_X==true && x2>x1){
-           k=0;
-           for(j=1; j<=MAXPUNTI; j++){
-              if(k>=MAXPERCORSI) break;
-              if(Punti[j][2]==0) break;
-              //-----------------------------------------
-              // Solo nodi esistenti
-              //-----------------------------------------
-              if(N.n[j]->num<1        ) continue;
-              if(N.n[j]->num>TOTPUNTI ) continue;
-              //--------------------------------------------------
-              // Scarto nodi su altri piani
-              //--------------------------------------------------
-              if(N.n[p1]->piano!=N.n[N.n[j]->num]->piano) continue;
-              //-----------------------------------------
-              // Se nodo di magazzino verifico se
-              // percorribile
-              //-----------------------------------------
-              n1=N.n[j]->num;
-              if(N.punti_notevoli[n1]==true){
-                 num_mag=num_pos=0;
-                 if(M.test_punto_presente_mag(buffer, n1, &num_mag, &num_pos)) continue;
-                 //--------------------------------------------------
-                 // Magazzino non valido
-                 //--------------------------------------------------
-                 if(num_mag<1                      ) continue;
-                 if(num_mag>TOTMAG                 ) continue;
-                 if(M.m[num_mag]->Num<1            ) continue;
-                 if(M.m[num_mag]->Num>TOTMAG       ) continue;
-                 if(M.m[num_mag]->Fifo==false      ) continue;
-                 if(M.m[num_mag]->Tipo==MG_ESCLUSO ) continue;
-                 if(M.m[num_mag]->PuntoIng<1       ) continue;
-                 if(M.m[num_mag]->PuntoIng>TOTPUNTI) continue;
-                 if(M.m[num_mag]->PuntoOut<1       ) continue;
-                 if(M.m[num_mag]->PuntoOut>TOTPUNTI) continue;
-                 //--------------------------------------------------
-                 // Controllo stato magazzino (se ASRV carico)
-                 //--------------------------------------------------
-                 if(asrv_stato.sbit1.carico && M.m[num_mag]->NumCestoni!=0) continue;
-                 //--------------------------------------------------
-                 // Verifico che nodo del magazzino non sia
-                 // occupato o riservato
-                 //--------------------------------------------------
-                 altro_agv=0;
-                 if(P.test_dest_riservata(n1, &altro_agv, agv_num) && altro_agv!=0 && altro_agv!=agv_num) continue;
-                 if(P.test_dest_occupata(n1, &altro_agv) && altro_agv!=0 && altro_agv!=agv_num) continue;
-              }
-              //-----------------------------------------
-              // recupero coordinate
-              //-----------------------------------------
-              xn1 = Punti[n1][0];
-              yn1 = (Punti[n1][1]*(-1));
-              //-----------------------------------------
-              // Scarto punti non allineati
-              //-----------------------------------------
-              if(abs(y1-yn1)>5) continue;
-              //-----------------------------------------
-              // Scarto punti fuori range di coordinate
-              //-----------------------------------------
-              if(xn1>x2 || xn1<x1) continue;
-              path_taglio_trovato=true;
-              n_taglio[k]=n1;
-              k++;
-           }
-           //-----------------------------------------
-           // Ordinamento in base al verso
-           //-----------------------------------------
-           do{
-              ok_ordine=true;
-              for(j=1; j<MAXPERCORSI; j++){
-                 if(n_taglio[j]==0) break;
-                 n1  = n_taglio[j-1];
-                 xn1 = Punti[n1][0];
-                 yn1 = (Punti[n1][1]*(-1));
-                 n2  = n_taglio[j];
-                 xn2 = Punti[n2][0];
-                 yn2 = (Punti[n2][1]*(-1));
-                 if(xn2>xn1) continue; // ordine giusto
-                 //---------------------------
-                 // Inversione ordine nodi
-                 //---------------------------
-                 n0 = n_taglio[j-1];
-                 n_taglio[j-1] = n_taglio[j];
-                 n_taglio[j  ] = n0;
-                 ok_ordine=false;
-                 break;
-              }
-           }while(!ok_ordine);
-        }
-     }
-     //---------------------------------------------
-     // 4. TROVATO IL PERCORSO DI TAGLIO
-     // Controllo che i nodi di cui ne fanno parte
-     // siano collegati tra loro nella struttura
-     // Percorsi[][]
-     //---------------------------------------------
-     if(path_taglio_trovato==true){
-        for(j=1; j<MAXPERCORSI; j++){
-           if(n_taglio[j]==0) break;
-           n1 = n_taglio[j-1];
-           n2 = n_taglio[j  ];
-           //----------------------------------------------------------
-           // Verifico se nodi collegati
-           //----------------------------------------------------------
-           ok_ordine=false;
-           for(k=0;;k++){
-              if(Percorso[k][0]==0) break;
-              if(Percorso[k][1]==0) break;
-              if(Percorso[k][0]==n1 && Percorso[k][1]==n2){ok_ordine=true; break;}
-              if(Percorso[k][0]==n2 && Percorso[k][1]==n1){ok_ordine=true; break;}
-           }
-           //----------------------------------------------------------
-           // Se anche una sola coppia di nodi del percorso di taglio
-           // non è collegata, allora scarto tutto il percorso
-           //----------------------------------------------------------
-           if(ok_ordine==false){path_taglio_trovato=false; break;}
-        }
-     }
-     //---------------------------------------------
-     // 5. COMPILO LE INFO DI PERCORSO TAGLIO
-     // Se percorso di taglio valido, compilo i
-     // dati di percorrenza
-     //---------------------------------------------
-     if(path_taglio_trovato==true){
-        for(j=0; j<MAXPERCORSI; j++){
-           if(n_taglio[j+1]==0) break;
-           //---------------------------------------------------
-           // Recupero distanza e rallentamento da editor nodi
-           //---------------------------------------------------
-           dist_taglio=ral_taglio=0;
-           // 1. ricerca nel verso di percorrenza
-           for(k=0; k<=MAXPUNTINODO-1; k++){
-              if(N.n[n_taglio[j]]->rec[k].ps==0            ) break;
-              if(N.n[n_taglio[j]]->rec[k].ps!=n_taglio[j+1]) continue;
-              ral_taglio=N.n[n_taglio[j]]->rec[k].ral;
-              dist_taglio=N.n[n_taglio[j]]->rec[k].dist;
+           memset(&dati_out, 0, sizeof(DATI_PERCORSO));
+           id_attraversa=9999;
+           for(k=i+1; k<MAXPERCORSI-1; k++){
+              if(perc[k+1]==0                                    ) break;
+              if(perc[k]!=N.n[M.m[num_mag]->PuntoOut]->rec[0].ps ) continue;
+              dati_out.ps   = N.n[M.m[num_mag]->PuntoOut]->rec[0].ps;
+              dati_out.dir  = N.n[M.m[num_mag]->PuntoOut]->rec[0].ind;
+              dati_out.rot  = N.n[M.m[num_mag]->PuntoOut]->rec[0].rot;
+              dati_out.ral  = N.n[M.m[num_mag]->PuntoOut]->rec[0].ral;
+              dati_out.dist = N.n[M.m[num_mag]->PuntoOut]->rec[0].dist;
+              id_attraversa = k-1;
               break;
            }
-           // 2. ricerca nel verso opposto a quello di percorrenza
-           if(dist_taglio==0){
-              for(k=0; k<=MAXPUNTINODO-1; k++){
-                 if(N.n[n_taglio[j+1]]->rec[k].ps==0          ) break;
-                 if(N.n[n_taglio[j+1]]->rec[k].ps!=n_taglio[j]) continue;
-                 ral_taglio=N.n[n_taglio[j+1]]->rec[k].ral;
-                 dist_taglio=N.n[n_taglio[j+1]]->rec[k].dist;
-                 break;
+           if(id_attraversa==9999) continue;
+           //--------------------------------------------------
+           // recupero percorso sotto al magazzino
+           //--------------------------------------------------
+           n_dist=n_rot=0;
+           memset(&mag_perc[0], 0, sizeof(mag_perc));
+           memset(&mag_dati[0], 0, sizeof(mag_dati));
+           err = distanza(STD_PATH, p1, M.m[num_mag]->PuntoOut, &mag_perc[0], &mag_dati[0], buffer, &n_dist, &n_rot);
+           if(err!=0 || n_dist>MAXPERCORSI) continue;
+           //--------------------------------------------------
+           // Incollo percorso attraversamento a percorso
+           // originale
+           //--------------------------------------------------
+           for(k=0; k<MAXPERCORSI; k++){
+              if(mag_perc[k]==0) break;
+              new_perc[id] = mag_perc[k];
+              if(mag_perc[k+1]!=0){
+                 memcpy(&new_dati[id], &mag_dati[k], sizeof(DATI_PERCORSO));
+                 id++;
+              }
+              else{
+                 memcpy(&new_dati[id], &dati_out, sizeof(DATI_PERCORSO));
               }
            }
-           //---------------------------------------------------
-           // Se non ho trovato i dati di percorrenza mancanti
-           // il percorso non è valido
-           //---------------------------------------------------
-           if(dist_taglio==0){path_taglio_trovato=false; break;}
-           d_taglio[j].ps  = n_taglio[j+1];
-           d_taglio[j].dir = dir_taglio;
-           d_taglio[j].rot = rot_taglio;
-           d_taglio[j].ral = ral_taglio;
-           d_taglio[j].dist= dist_taglio;
+           i=id_attraversa;
+           break;
         }
      }
-     //--------------------------------------------------
-     // 6. INSERISCO IL PERCORSO DI TAGLIO
-     // Se anche i dati di percorrenza sono stati
-     // calcolati correttamente vado a inserire il
-     // percorso di taglio nel path originale.
-     //--------------------------------------------------
-     if(path_taglio_trovato==true){
-        for(j=0; j<MAXPERCORSI; j++){
-           if(n_taglio[j+1]==0) break;
-           new_perc[id] = n_taglio[j];
-           memcpy(&new_dati[id], &d_taglio[j], sizeof(DATI_PERCORSO));
-           id++;
-        }
-        i=end_taglio;
-     }
-     //--------------------------------------------------
-     // 7. PERCORSO DI TAGLIO NON VALIDO
-     // Continuo l'analisi del percorso originale
-     // incrementando l'indice
-     //--------------------------------------------------
-     else id++;
+     id++;
   }
-  //--------------------------------------------------
-  // Ritorno il percorso rielaborato
-  //--------------------------------------------------
-  memcpy(perc, &new_perc[0], sizeof(new_perc));
-  memcpy(dati, &new_dati[0], sizeof(new_dati));
   return;
 }
 

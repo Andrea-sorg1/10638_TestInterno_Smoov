@@ -3101,7 +3101,7 @@ object FormMain: TFormMain
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 840
-    Top = 85
+    Top = 80
   end
   object WSocket0: TWSocket
     LineMode = False

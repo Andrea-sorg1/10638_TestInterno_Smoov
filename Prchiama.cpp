@@ -2556,7 +2556,7 @@ int process::test_dest_occupata(short int dest, short int *num_agv)
   // Nodo non attendibile
   //------------------------------
   if(dest<1       ) return 0;
-  if(dest>TOTPUNTI) return 0;
+  if(dest>MAXPUNTI) return 0;
 
   tgv_occupante = N.nodo_busy[dest];
   //--------------------------------------------------------
@@ -2679,6 +2679,11 @@ int process::test_dest_riservata(short int dest, short int *num_agv, short int m
   bool PercorsoRiservato;
   short int tgv_in_ing, tgv_in_out;
   short int num_baia, num_mag, num_pos, i, j, k, z, nn;
+  bool ritorna=false;  // Andrea, inzializzato a false
+  short int altro_num_mag_sorg, altro_num_pos_sorg;
+  short int altro_num_mag_dest, altro_num_pos_dest;
+  bool tgv_in_uscita=false;
+
 
   *num_agv=0;
   //------------------------------------
@@ -2687,11 +2692,97 @@ int process::test_dest_riservata(short int dest, short int *num_agv, short int m
   if(dest<1       ) return 0;
   if(dest>TOTPUNTI) return 0;
 
-  //------------------------------------
+  //-----------------------------------------------------------------
   // SOLO PER I PUNTI TERMINALI
-  //------------------------------------
-  if(N.punti_notevoli[dest]==false) return 0;
+  //-----------------------------------------------------------------
+  // Anche per punti non terminali purchè bloccanti x punto terminale
+  //-----------------------------------------------------------------
+  //if(N.punti_notevoli[dest]==false) return 0;
+  if( N.punti_notevoli[dest]==false ){
+     //-----------------------------------------------------------------------------
+     // Verifica se punto è interbloccante e altro punto interbloccante è terminale
+     //-----------------------------------------------------------------------------
+     ritorna=true;
+     for(i=0; i<50; i++){
+        for(j=0; j<50; j++){
+           if(N.nodi_interbloccati[i][j]!=dest) continue;
+           //---------------------------------------------
+           // Verifico se altri nodi appartenenti alla
+           // stessa riga sono destinazione di qualche
+           // TGV
+           //---------------------------------------------
+           for(k=0; k<50; k++){
+              if(k==j                             ) continue;
+              nn = N.nodi_interbloccati[i][k];
+              if(nn<1                             ) continue;
+              if(nn>MAXPUNTI                      ) continue;
+              if( N.punti_notevoli[nn]==true ){
+                 ritorna=false;
+                 break;
+              }
+           }
+           if( !ritorna ) break;
+        }
+        if( !ritorna ) break;
+     }
+  }
+  if( ritorna ) return 0;
 
+
+  //############################################################
+  //------------------------------------------------------------
+  // Andrea 24/1/2018:
+  // Per prima cosa verifica se nodo è in magazzino
+  // e se nodo riservato da Tgv non in uscita da magazzino
+  //------------------------------------------------------------
+  //------------------------------------
+  // verifica dest = mag
+  //------------------------------------
+  M.test_punto_presente_mag(buffer, dest, &num_mag, &num_pos);
+  if(num_mag>0 && num_mag<=TOTMAG){
+     for(i=1; i<=MAXAGV; i++){
+        if(i==mio_agv) continue;
+        //----------------------------------------------------------------
+        // Verifico tutti i percorsi degli altri TGV (start escluso)
+        //----------------------------------------------------------------
+        PercorsoRiservato=false;
+        for(j=1; j<MAXPERCORSI; j++){
+           if(AGV[i]->mission.punto_prenotato[j]==0) break;
+           if(dest==AGV[i]->mission.punto_prenotato[j]){
+              PercorsoRiservato=true;
+              break;
+           }
+        }
+        if(PercorsoRiservato==true){
+           //-------------------------------------------------------------
+           // Se l'altro TGV è in uscita dal magazzino, il magazzino non
+           // è da considerare occupato.
+           //-------------------------------------------------------------
+           tgv_in_uscita=false;
+           altro_num_mag_sorg=altro_num_pos_sorg=0;
+           M.test_punto_presente_mag(buffer, AGV[i]->mission.pstart, &altro_num_mag_sorg, &altro_num_pos_sorg);
+           altro_num_mag_dest=altro_num_pos_dest=0;
+           M.test_punto_presente_mag(buffer, AGV[i]->mission.pend, &altro_num_mag_dest, &altro_num_pos_dest);
+           //-------------------------------------------------------
+           // ALTRO AGV con partenza magazzino destinazione del
+           // TGV considerato, e destinazione differente
+           //-------------------------------------------------------
+           if(altro_num_mag_sorg==num_mag && altro_num_mag_dest!=num_mag) tgv_in_uscita=true;
+        }
+
+        //----------------------------------------------------------------
+        // Considero destinazione riservata se:
+        // - Tgv su Magazzino non in uscita da Mag.
+        //----------------------------------------------------------------
+        if(PercorsoRiservato==true && tgv_in_uscita==false ){
+           *num_agv = i;
+           return 1;
+        }
+     }
+  }
+  //############################################################
+
+  *num_agv=0;
   //------------------------------------
   // Verifico nodo riservato
   //------------------------------------
@@ -2718,6 +2809,8 @@ int process::test_dest_riservata(short int dest, short int *num_agv, short int m
         return 1;
      };
   };
+
+
 
   //--------------------------------------------------------
   // INTERBLOCCO NODI
