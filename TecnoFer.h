@@ -1004,7 +1004,11 @@ class agv{
           int  ASRV_save_file_stato(char *all_mess);
           int  ASRV_load_file_mission(char *all_mess);
           int  ASRV_save_file_mission(char *all_mess);
-          void ASRV_attraversa_corsie(short int perc[], struct DATI_PERCORSO dati[], short int *new_perc, struct DATI_PERCORSO *new_dati);
+          //---------------------------------------------------
+          // Gestione tragitti
+          //---------------------------------------------------
+          void ASRV_select_path(short int dest, short int *perc_asrv, struct DATI_PERCORSO *dati_asrv);
+          void ASRV_attraversa_corsie(short int *perc, struct DATI_PERCORSO *dati);
 
 
           }; /*** class agv ***/
@@ -1026,21 +1030,21 @@ class ingombroagv{
   };
 
   struct LINE AreaOccupata[1000];
-  //------------------------------------------------
+  //---------------------------------------------------------------
   // Costruttore
-  //------------------------------------------------
+  //---------------------------------------------------------------
   ingombroagv(int NumAgv);
-  //-------------------------------------------------------------------
+  //---------------------------------------------------------------
   // Setta l'ingombro dell'Agv
-  //-------------------------------------------------------------------
+  //---------------------------------------------------------------
   int ingombroagv::SettaIngombroSuTratto(int NodoStart, int NodoEnd, int DirRot, char *all_mess);
   void ingombroagv::AzzeraIngombroAgv();
   void ingombroagv::calcola_ingombro_agv_su_singolo_punto(int PosX, int PosY, double rot, struct LINE *SegmentiIngombroAgv);
 
   int ingombroagv::VerificaIntersezioneAgv(ingombroagv *AltroAgv, char *all_mess);
-  //-----------------------------------------------------------------------
+  //---------------------------------------------------------------
   // Disegna l'ingombro settato dell'agv su sfondo grafico
-  //-----------------------------------------------------------------------
+  //---------------------------------------------------------------
   void ingombroagv::disegna_ingombro_agv(ingombroagv **ListaAgv, int TotAgv, Graphics::TBitmap *Sfondo);
   //---------------------------------------------------------------
   // Utility per calcoli ingombri
@@ -1984,6 +1988,12 @@ TIPO_VARIABILE short int NumCicliPerSbloccoDeadLock;                     // Nume
 TIPO_VARIABILE bool ProseguiPerSbloccoDeadLock;                          // Attiva procedura di PROSEGUI per sblocco DeadLock
 TIPO_VARIABILE int  RilascioApp;                                         // numero di cicli dopo il quale riasciare l'applicazione
 
+
+//-------------------------------------------------------
+// GESTIONE_ASRV (Variabili riservate)
+//-------------------------------------------------------
+TIPO_VARIABILE short int ASRV_MinNodiLiberiPercorsoInverso;
+TIPO_VARIABILE bool      ASRV_AbilitaPassaggioSottoAccumoli;
 
 //-------------------------------------------------------
 // Gestione TELECAMERINA

@@ -61,8 +61,8 @@ BottomPanelData=0000040000000000F90400000000000002960000000000000001000000009A00
 
 [View0]
 Module=D:\_Tecno\10638_TestInterno_Smoov\10638_TestInterno_Smoov\Listagen.cpp
-CursorX=20
-CursorY=13
+CursorX=122
+CursorY=11
 TopLine=1
 LeftCol=1
 
@@ -260,7 +260,7 @@ LRDockWidth=445
 Dockable=1
 SplitPos=133
 ArrangeBy=Name
-SelectedItem=Name
+SelectedItem=Caption
 ExpandedItems=
 HiddenCategories=
 

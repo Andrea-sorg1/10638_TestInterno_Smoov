@@ -452,7 +452,7 @@ void __fastcall TFormStato::VisualizzaStatoTGV()
      if( AGV[NumeroTGV]->allarme_interno == ALL_INT_SCAR_MANUALE       ) strcpy(stringa_allarmi, MESS[361]);
      if( AGV[NumeroTGV]->allarme_interno == ALL_INT_POS_NOT_OK         ) strcpy(stringa_allarmi, MESS[362]);
      if( AGV[NumeroTGV]->allarme_interno == ALL_INT_STOP_TGV           ) sprintf(stringa_allarmi, "stop TGV! view in menù: (%s)", MESS[42]);
-     if( AGV[NumeroTGV]->allarme_interno == ALL_INT_DATI_ANOMALI       ) sprintf(stringa_allarmi, "anomalia stato shuttle! view in menù: (%s)", MESS[42]);
+     if( AGV[NumeroTGV]->allarme_interno == ALL_INT_DATI_ANOMALI       ) sprintf(stringa_allarmi, "anomalia stato navetta! view in menù: (%s)", MESS[42]);
      if( AGV[NumeroTGV]->allarme_interno == ALL_INT_ERR_COMUNIC        ) sprintf(stringa_allarmi, "persistent comunication error! view in menù: (%s)", MESS[42]);
      if( AGV[NumeroTGV]->allarme_interno == ALL_INT_RICARICA_OCC       ) strcpy(stringa_allarmi, MESS[340]);
      if( AGV[NumeroTGV]->allarme_interno == ALL_INT_START_DA_OCC       ) strcpy(stringa_allarmi, MESS[379]);

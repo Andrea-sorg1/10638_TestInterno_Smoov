@@ -2119,15 +2119,14 @@ void agv::SetResetPIntForzatoTGV()
   // l'azzeramento è andato a buon fine.
   //----------------------------------------------------------
   if(ResetMissione==true && !break_Com[COM1]){
-     memset(&dm[0], 0, sizeof(dm));
-     err = OM.ld_canale(&dm[0], (WORD)(agv_num), "RD", 91, 2, all_mess);
+     err = load_stato(all_mess);
      //-------------------------------------------------
      // Se la missione non è stata azzerata --> Skip!
      // 1 - errore di comunicazione
      // 2 - DM91!=0
      // 3 - OK PROGRAMMA==0 (bit5 DM92)
      //-------------------------------------------------
-     if(err!=0 || dm[0]!=0 || !(TestBit((char *) &dm[1], 5))) ResetMissione=false;
+     if(err!=0 || stato.start!=0 || stato.s.bit.okprog==false) ResetMissione=false;
   }
   //----------------------------------------------------------
   // Se sono verificate tutte le condizione necessarie per
@@ -15623,7 +15622,15 @@ int agv::trs_mission(char *all_mess)
         // Salto la scrittura a PLC e metto il START=1
         //------------------------------------------------------
         if(mission.EsclPLC || break_Com[COM1]){
-           if( stato.start==0 ) stato.start = 1;
+           if( stato.start==0 ){
+              stato.start = 1;
+              //--------------------------------------
+              // GESTIONE_ASRV (asrv_stato.start)
+              //--------------------------------------
+              #ifdef GESTIONE_ASRV
+                 asrv_stato.start = 1;
+              #endif;
+           }
            return 0;
         }
         //------------------------------------------------------
@@ -16388,7 +16395,7 @@ int agv::history_allarmi()
         if( allarme_interno == ALL_INT_SCAR_MANUALE        ) strcpy(buffer, MESS[361]);
         if( allarme_interno == ALL_INT_POS_NOT_OK          ) strcpy(buffer, MESS[362]);
         if( allarme_interno == ALL_INT_STOP_TGV            ) sprintf(buffer, "stop TGV! view in menù: (%s)", MESS[241]);
-        if( allarme_interno == ALL_INT_DATI_ANOMALI        ) sprintf(buffer, "error in DM90, DM91, DM92! view in menù: (%s)", MESS[241]);
+        if( allarme_interno == ALL_INT_DATI_ANOMALI        ) sprintf(buffer, "anomalia stato navetta! view in menù: (%s)", MESS[241]);
         if( allarme_interno == ALL_INT_ERR_COMUNIC         ) sprintf(buffer, "persistent comunication error! view in menù: (%s)", MESS[241]);
         if( allarme_interno == ALL_INT_RICARICA_OCC        ) strcpy(buffer, MESS[340]);
         if( allarme_interno == ALL_INT_START_DA_OCC        ) strcpy(buffer, MESS[379]);
@@ -16893,7 +16900,7 @@ void agv::CompilaAllarmiAttuali()
         if( allarme_interno == ALL_INT_SCAR_MANUALE        ) strcpy(stringa, MESS[361]);
         if( allarme_interno == ALL_INT_POS_NOT_OK          ) strcpy(stringa, MESS[362]);
         if( allarme_interno == ALL_INT_STOP_TGV            ) sprintf(stringa, "stop TGV! view in menù: (%s)", MESS[42]);
-        if( allarme_interno == ALL_INT_DATI_ANOMALI        ) sprintf(stringa, "error in DM90, DM91, DM92! view in menù: (%s)", MESS[42]);
+        if( allarme_interno == ALL_INT_DATI_ANOMALI        ) sprintf(stringa, "anomalia stato navetta! view in menù: (%s)", MESS[42]);
         if( allarme_interno == ALL_INT_ERR_COMUNIC         ) sprintf(stringa, "persistent comunication error! view in menù: (%s)", MESS[42]);
         if( allarme_interno == ALL_INT_RICARICA_OCC        ) strcpy(stringa, MESS[340]);
         if( allarme_interno == ALL_INT_START_DA_OCC        ) strcpy(stringa, MESS[379]);
